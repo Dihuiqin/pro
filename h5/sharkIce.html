@@ -1,0 +1,269 @@
+<!doctype html>
+<html class="feedback">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="misapplication-tap-highlight" content="no" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <title>718-鲨鱼砸冰块</title>
+    <meta name="keywords" content="鲨鱼砸冰块">
+    <meta name="description" content="鲨鱼砸冰块">
+    <script src="../public/js/flexibleMine.js"></script>
+    <link href="resource/css/sharkIce.css" rel="stylesheet" />
+</head>
+<body>
+<div id="aaa"></div>
+<!--提示教程 & 结果  第一层-->
+<div id="coinGuide">
+    <div class="maskBg"></div>
+    <div class="guideBg pngImgB">
+        <div class="guideTxt"></div>
+    </div>
+</div>
+<div id="gameOver">
+    <div class="maskBg"></div>
+    <div class="resultDialog posCenter">
+        <div id="resultGoods" class="result">
+            <div class="resultBg pngImgB"></div>
+            <div class="resultTxt">
+                <div class="goodsInfo">
+                    <div class="imgLabel">专属<br/>优惠</div>
+                    <div class="goodsImg"><img src="" alt=""></div>
+                    <div class="goodsName">111</div>
+                    <div class="goodsPrice">
+                        <div class="lastPrice">冰点价:￥<span>222</span></div>
+                        <div class="firstPrice">聚鲨价:333</div>
+                    </div>
+                </div>
+                <div class="btnGroup">
+                    <a class="resultBtn" href="">立即购买</a>
+                    <div class="share resultBtn">分享</div>
+                </div>
+            </div>
+        </div>
+        <div id="resultCoupon" class="result">
+            <div class="resultBg pngImgB"></div>
+            <div class="resultTxt">
+                <p class="titl">鲨鱼宝宝成功破冰!</p>
+                <p class="Txt">送您 <span class="prize">3元无门槛券</span> 谢礼</p>
+                <p class="viceTxt">请在“我的”-“礼金券”中查看</p>
+                <div class="btnGroup">
+                    <a class="resultBtn" id="gomain">主会场</a>
+                    <div class="share resultBtn">分享</div>
+                </div>
+            </div>
+        </div>
+        <div id="resultError" class="result">
+            <div class="resultBg pngImgB"></div>
+            <div class="resultTxt">
+                <p class="Txt">鲨鱼宝宝未能破冰</p>
+                <p class="viceTxt">请快速点击 <span>START</span> 再试一次哦</p>
+                <div class="btnGroup">
+                    <a class="resultBtn2 pngImgB" href="{pigcms::$wxtest}redrain.php?uid={pigcms:$Dazpan.id}"></a>
+                </div>
+            </div>
+        </div>
+        <div id="close" class="pngImgB"></div>
+    </div>
+</div>
+<!--关闭/倒计时/锤子 第一层-->
+<div id="coinData" >
+    <div class="coinCountdown pngImgB">
+        <span class="dataCD dataBg">倒计时</span>
+        <span id="dataCD" class="dataBg">10s</span>
+    </div>
+    <div id="hammer" class="pngImgB hammerRotate"></div>
+    <!--点击区域-->
+    <div class="coinData"></div>
+    <div id="firstClose" class="pngImgB close"><p>关闭</p></div>
+    <!--进度条-->
+    <div class="progressBar">
+        <div class="smallHammer pngImgB"></div>
+        <div class="progress2"></div>
+        <div class="triangle"></div>
+    </div>
+</div>
+<!--冰层/鲨鱼 第二层-->
+<div id="coinMask">
+    <div class="shark pngImgB">
+        <div class="mouth">
+            <div class="step1">
+                <div class="mouth2 pngImgB"></div>
+            </div>
+            <div class="step2 pngImgB"></div>
+        </div>
+        <div class="cryArea">
+            <div class="cry cryLeft"></div>
+            <div class="cry cryRight"></div>
+        </div>
+    </div>
+    <div class="crackAll">
+        <div class="iceMaskBg">
+            <div class="maskBgColor maskBgLeft"></div>
+            <div class="maskBgColor maskBgRight"></div>
+        </div>
+        <div class="crackArea">
+            <div class="crackBg sharkBg"></div>
+            <div class="cracks crack1 sharkBg"></div>
+            <div class="cracks crack2 sharkBg"></div>
+            <div class="cracks crack3 sharkBg"></div>
+            <div class="cracks crack4 sharkBg"></div>
+            <div class="cracks crack5 sharkBg"></div>
+            <div class="cracks crack5 sharkBg"></div>
+            <div class="cracks crack6 sharkBg"></div>
+            <div class="cracks crack7 sharkBg"></div>
+            <div class="cracks crack7 sharkBg"></div>
+            <div class="cracks crack8 sharkBg"></div>
+            <div class="cracks crack8 sharkBg"></div>
+            <div class="cracks crack9 sharkBg"></div>
+            <div class="cracks crack10 sharkBg"></div>
+            <div class="cracks crack10 sharkBg"></div>
+            <div class="cracks crack11 sharkBg"></div>
+            <div class="cracks crack11 sharkBg"></div>
+            <div class="cracks crack12 sharkBg"></div>
+            <div class="cracks crack13 sharkBg"></div>
+            <div class="cracks crack13 sharkBg"></div>
+            <div class="cracks crack14 sharkBg"></div>
+            <div class="cracks crack14 sharkBg"></div>
+            <div class="cracks crack14 sharkBg"></div>
+            <div class="cracks crack15 sharkBg"></div>
+            <div class="cracks crack15 sharkBg"></div>
+            <div class="crack16 cracks sharkBg"></div>
+        </div>
+    </div>
+</div>
+<!--背景 最下层-->
+<div id="coinBg" class="iceBg"></div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/sharkIce.js"></script>
+<script src="resource/js/sharkIce.js"></script>
+<script>
+    //获取uid，并拼入
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  decodeURI(r[2]); return null;
+    }
+    /*游戏结束*/
+    function gameOver(finalScore) {
+        /*-------------------------*/
+      var data = sharkIce('getResult',finalScore);
+      var prizeNum = '';
+      $('#coinData').hide();
+      switch(data.prizetype){
+        case 1 : {   //一等奖
+          prizeNum = '999减120优惠券';
+        }break;
+        case 2 : {   //二等奖
+          prizeNum = '499减60优惠券';
+        }break;
+        case 3 :{   //三等奖
+          prizeNum ='299减50优惠券';
+        }break;
+        case 4 : {   //四等奖
+          prizeNum = '';
+        }break;
+        case 5 : {   //五等奖
+          prizeNum ='5元无门槛券 ';
+        }break;
+        default:{   //未中奖
+          $('#resultCoupon').hide();
+          $('#resultGoods').hide();
+          $('#resultError').show();
+        }break;
+      }
+      resultDiaplay(data.prizetype,data);
+      $('.prize').html(prizeNum);
+      myShare(data.prizetype);
+    }
+    //结果显示
+    function resultDiaplay(num,data) {
+        if(num){
+            $('.crackAll').hide();
+            $('.mouth').show();
+            /*-------献吻------*/
+            setTimeout(function () {
+                $('.step1').hide();
+                $('.step2').show().animate({left:"3rem",top:"-6.77rem",opacity:'1'},1200);
+            },200);
+        }else if(num == 0){
+            $('.shark').css({'height':'12rem','background-position':'0 -25.627rem'});
+            $('.cryArea').show();
+            $('.cry').animate({height:"8.293rem"},2000);
+        }
+        setTimeout(function () {
+            $('#gameOver').show();
+            if(num == 4){
+                var arrInfo = [
+                    ['9113981','艾特巴赫不锈钢刀具7件组','398','239','resource/images/sharkIce/product1.jpg'],
+                    ['9130231','泉林本色有芯卷纸150g*2HK150','53','48','resource/images/sharkIce/product2.jpg'],
+                    ['9135787','T.T蜗牛修护蚕丝面膜组','199','120','resource/images/sharkIce/product3.jpg'],
+                    ['9137179','吉百事凡士林杏仁油洁肤皂套组','128','90','resource/images/sharkIce/product4.jpg'],
+                    ['9118478','思家旺喷水健康拖清洁2套组','199','120','resource/images/sharkIce/product5.jpg']
+                ];
+                var random = Math.floor(Math.random()*5);
+                $('#resultGoods .goodsImg img').attr('src',arrInfo[random][4]);
+                $('#resultGoods .goodsName').html('送您'+arrInfo[random][1]);
+                $('#resultGoods .firstPrice').html('聚鲨价:'+arrInfo[random][2]);
+                $('#resultGoods .lastPrice span').html(arrInfo[random][3]);
+                // $('#resultGoods .resultBtn').attr('href','product-'+arrInfo[random][0]+'.html'); // todo
+                $('#resultGoods').show();
+            }else if(num == 0){
+                $('#resultError').show();
+            }else{
+                $('#resultCoupon').show();
+            }
+        },3000);
+    }
+    //分享功能
+    function myShare(prize) {
+        var shareOb = JSON.stringify({
+            "title": '拯救鲨鱼宝宝',
+            "desc": '玩游戏得红包，更有专属商品折扣等你来哦！',
+            "link": '{pigcms::$wxtest}redrain.php?prize='+prize,
+            "imgUrl": 'resource/images/sharkIce/share.jpg'
+        });
+        $(".share").on('touchend',function () {
+            //添加动画效果
+            //调用app方法
+            if (typeof app !== 'undefined' && app.share) {
+                app.share(shareOb);
+            } else {
+                alert('请更新到最新版本');
+            }
+        });
+    }
+    /*-------------------------*/
+    var channel = getUrlParam('main_venue_enter');
+    var uid = getUrlParam('uid');
+    /*主会场进入时返回的不同作用*/    //关闭按钮
+    if(channel == 'true'){
+        $('#gomain').on('touchend',function(){
+            $('#gameOver').hide();
+            history.back();
+        });
+        $('.close').on('touchend',function(){
+            $('#gameOver').hide();
+            history.back();
+        });
+        $('#close').on('touchend',function(){
+            $('#gameOver').hide();
+            history.back();
+        })
+    }else{
+        // $('#gomain').attr('href',''); // todo
+        $('.close').on('touchend',function(){
+            $('#gameOver').hide();
+            closeBtn();
+        });
+        $('#close').on('touchend',function(){
+            $('#gameOver').hide();
+            closeBtn();
+        })
+    }
+
+
+</script>
+</body>
+</html>
