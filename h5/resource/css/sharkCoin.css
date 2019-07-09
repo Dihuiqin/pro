@@ -1,0 +1,292 @@
+html,body{ width: 10rem; height: 100vh; overflow: hidden}
+body{font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; color: #fff;}
+#coin,#coinMask,#coinData,#coinGuide,#gameOver,#coinBg,.maskBg{ width: 10rem; height: 100vh; overflow: hidden; position: absolute;}
+.maskBg{ background: #000; opacity: .6;}
+/*下方按钮*/
+.button{ width: 5.88rem; height: 2.227rem; font-size: .92rem; font-weight: 700; line-height:3.1rem; text-align: center; position: absolute; left: 0; right: 0; bottom: .64rem; margin: auto;}
+.button:active{ color:#f76300; }
+#aaa{ display: none;}
+/*鱼群 & 得分/金币/start按钮 & 关闭按钮$音乐控制开关*/
+.fish,.pngImg,.coinPackage{background: url("../images/sharkCoin/icon.png") no-repeat center center/5.88rem 5.973rem;}
+.pngImgB{background: url("../images/sharkCoin/shark.png") no-repeat center center/10rem 25.947rem;}
+/* 上方罩层粉紫色&水草*/
+.plants,.pinkMaskBg{background: url("../images/sharkCoin/mask.png") no-repeat top center/10rem 13.733rem;}
+/*mask one*/
+#firstArea{ width: 100%; height: 100vh; position: absolute; z-index: 5;}
+#coinGuide{display: none;}
+#coinGuide,#gameOver{z-index: 4;}
+.guideBg{ position: absolute; margin: auto; left: 0; right: 0; bottom: 3rem; width: 6.6rem; height: 8.32rem;background-position:0 -8.773rem }
+#firstClose,#audioSwitch{ position: absolute; right:.8rem; width: .95rem; height: .95rem;  }
+#firstClose{ top:3.147rem; background-position: 0 -2.667rem;}
+#audioSwitch{ z-index: 4; display: none; top:5.3rem; background-position: -1.133rem -2.667rem;}
+#firstClose p,#audioSwitch p{position: absolute; top:1rem; width: .933rem; font-size: .42rem; line-height: .8rem; text-align: center;}
+.guideTxt{ margin: auto; width: 6rem; padding: .52rem 0; font-size: .507rem; line-height: .8rem; text-align: center;}
+#hand{ position: absolute; bottom:-.3rem; right: 1.95rem; width:1.17rem;height: 1.107rem; background-position:-7.6rem -3.773rem; }
+
+#gameOver .btnGroup{ width: 100%; text-align: center;}
+#gameOver .resultBtn{ height: .773rem; line-height: .773rem; margin-top: .6rem; display: inline-block; background: #f76300; color: #fff; border-radius: .4rem; text-align: center; font-size: .48rem;}
+#gameOver .resultTxt{ height: 4rem; background: #fff;}
+#close{ position: absolute; left: 5.4rem; top:-1.387rem; width:.987rem;height:1.413rem; background-position:-6.613rem -3.773rem; }
+.resultDialog{ position: absolute; top:0;bottom:0;left:0;right:0; margin: auto; width:6.533rem;height:7.467rem; }
+.result{ position: absolute; width:100%;height: 7.467rem; border-radius: .267rem;overflow: hidden; }
+#resultOk,#gameOver,#resultError{display: none; }
+#resultOk p,.resultBg{ width:6.533rem; color: #f76300; }
+#gameOver p{ text-align: center; }
+#gameOver p.Txt{ padding-top: .48rem; font-size:.4rem; line-height: .4rem; }
+#gameOver p.viceTxt{ padding-top: .32rem; font-size:.36rem; line-height: .36rem; color: #000; }
+#resultOk .resultBg{ height: 4rem; line-height: 4rem; font-size:.733rem;  text-align: center; background-position:0 -4.507rem; }
+#resultOk .resultBg span{ font-size:1.533rem; font-weight: 700; letter-spacing: -.1rem;}
+#resultOk .resultBtn{ width: 2.4rem; margin-left: .4rem; margin-right: .4rem;}
+#resultError .resultBg,#noChance .resultBg{ height: 4.187rem; background-position:top left; }
+#resultError p,#noChance p{ color: #000;}
+#resultError p.Txt{ padding-top: .4rem; }
+#resultError p.viceTxt{ padding-top: .24rem; }
+#resultError p.viceTxt span{ display: inline-block; margin: 0 .133rem; width:1.4rem; height:.56rem; line-height:.56rem;background: #ffbd0d; color: #fff; border:2px #ff960d solid; border-radius: .4rem; }
+#resultError .resultBtn,#noChance .resultBtn{ width: 3.733rem; margin-top: .4rem;}
+.noChanceBox{background: url("../images/sharkCoin/noChance.jpg") no-repeat left bottom/10rem 17.787rem;}
+/*mask two*/
+#coinData{z-index: 3;}
+.coinScore,.coinCountdown{width: 2.7rem;height: 1.067rem; position: absolute; top:.48rem;}
+.coinScore{left:.48rem;}
+.coinCountdown{right:.48rem;}
+#coinData .dataBg{ width: 100%; height: 1.067rem; line-height: 1.09rem; text-indent: 1.2rem; font-size: 1.213rem; text-align: left; }
+#coinData span{ width: 100%; display: inline-block; line-height: .533rem; font-size: .48rem; text-align: center; text-indent: .3rem;}
+#coinData .dataScore,#coinData .dataCD{width: 1.067rem; height: 1.067rem; position: absolute;}
+#coinData .dataScore{  background-position:0 -1.333rem; }
+#coinData .dataCD{ background-position:-.947rem 0; }
+/*mask three*/
+#coinMask{ z-index: 2;}
+.pinkMaskBg{ width: 10rem; height: 8.947rem; background-position: top left;}
+.shark,.plants{ width: 10rem; position: absolute; background-position: bottom left;}
+.shark{ bottom: -7.92rem; height: 7.92rem;
+    -moz-transition:    all 1s linear 1s;
+    -webkit-transition: all 1s linear 1s;
+    -o-transition:      all 1s linear 1s;
+    transition:         all 1s linear 1s;
+}
+.eyes{ position: absolute; bottom:5.04rem; width: 1.22rem; height: 1.2rem;background-position:-8.787rem -3.773rem; }
+.eyesL{ left:1.84rem;}
+.eyesR{ right:1.84rem;}
+.tongue{ position: absolute; left: 0;right: 0; margin: auto; bottom:0; width: 2.027rem; height: 3.533rem; background-position: top right;}
+.tongueMove{
+    -moz-animation:     tongue 1s linear infinite .2s;
+    -webkit-animation:  tongue 1s linear infinite .2s;
+    -o-animation:       tongue 1s linear infinite .2s;
+    animation:          tongue 1s linear infinite .2s;
+}
+.plants{ bottom: 0; height: 4.493rem; }
+/*mask four*/
+.coinPackage{z-index: 1; width: 1.067rem; height: 1.067rem; display: inline-block; position: fixed; bottom: 100%; background-position:0 -1.333rem;
+    -moz-transition:     all 2s linear;
+    -webkit-transition:  all 2s linear;
+    -o-transition:       all 2s linear;
+    transition:          all 2s linear;}
+.coinClick{ z-index: 3; opacity: 0;
+    -moz-transition:    all .3s linear ;
+    -webkit-transition: all .3s linear ;
+    -o-transition:      all .3s linear ;
+    transition:         all .3s linear ;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+/*mask five*/
+.fish{ position:absolute;}
+#coinBg{background: url("../images/sharkCoin/coinBg.png") no-repeat center center/10rem 17.787rem;}
+.pinkFish,.pinkFish2{ left: -1.053rem; width: 1.12rem; height: .667rem; background-position:top right;}
+.pinkFish{ top:5.52rem;}
+.pinkFish2{ bottom:.933rem; z-index: 2;}
+.blueFish{ left: -1.213rem; width: 1.213rem; height: .773rem; top:1.973rem; background-position:-3.493rem 0;}
+.goldFish{ left: -1.227rem; width: 1.227rem; height: .773rem; top:3.733rem; background-position:-2.2rem 0;}
+.jellyFish{ left: 1.107rem; width: .747rem; height: 1.147rem; top:-1.2rem; background-position:top left;}
+.moreFish{ z-index: 2; bottom: 1.733rem; width: 4.267rem; height: 1.467rem; left:-4.267rem; background-position:-1.733rem -1.04rem;}
+
+#coinBtn,#guideKnow{ background-position:left bottom;}
+
+.startColor{
+    animation:          startColor .4s linear infinite ;
+    -moz-animation:     startColor .4s linear infinite ;	/* Firefox */
+    -webkit-animation:  startColor .4s linear infinite ;	/* Safari 和 Chrome */
+    -o-animation:       startColor .4s linear infinite ;
+}
+.eyesRotate{
+    -moz-animation:     eyesRotate .5s linear 1.5s infinite alternate;
+    -webkit-animation:  eyesRotate .5s linear 1.5s infinite alternate;
+    -o-animation:       eyesRotate .5s linear 1.5s infinite alternate;
+    animation:          eyesRotate .5s linear 1.5s infinite alternate;
+}
+.handMove{
+    -moz-animation:     handMove .15s linear infinite alternate;
+    -webkit-animation:  handMove .15s linear infinite alternate;
+    -o-animation:       handMove .15s linear infinite alternate;
+    animation:          handMove .15s linear infinite alternate;
+}
+/*从左到右*/
+@-webkit-keyframes MoveLtoR {
+    0%  { -webkit-transform:    translateX(-2rem); }
+    49% {-webkit-transform:     translateX(12rem) scale(1,1);}
+    50% {-webkit-transform:     translateX(12rem) scale(-1,1);}
+    100%  { -webkit-transform:  translateX(-2rem) scale(-1,1); }
+}
+@keyframes MoveLtoR {
+    0%  {  transform:   translateX(-2rem);}
+    49% {transform:     translateX(12rem) scale(1,1);}
+    50% {transform:     translateX(12rem) scale(-1,1);}
+    100%  {  transform: translateX(-2rem) scale(-1,1);}
+}
+@-o-keyframes MoveLtoR{
+    0%  { -o-transform: translateX(-2rem); }
+    49% { -o-transform: translateX(12rem) scale(1,1);}
+    50% { -o-transform: translateX(12rem) scale(-1,1);}
+    100%{ -o-transform: translateX(-2rem) scale(-1,1); }
+}
+@-moz-keyframes MoveLtoR{
+    0%  { -moz-transform:   translateX(-2rem); }
+    49% { -moz-transform:   translateX(12rem)  scale(1,1);}
+    50% { -moz-transform:   translateX(12rem)  scale(-1,1);}
+    100%{ -moz-transform:   translateX(-2rem)  scale(-1,1);}
+}
+/*从右到左*/
+@-webkit-keyframes MoveRtoL {
+    0%  { -webkit-transform: translateX(15rem); }
+    49% {-webkit-transform:  translateX(-5rem) scale(1,1);}
+    50% {-webkit-transform:  translateX(-5rem) scale(-1,1)}
+    100%{ -webkit-transform: translateX(15rem) scale(-1,1) }
+}
+@keyframes MoveRtoL {
+    0%  {transform: translateX(15rem);}
+    49% {transform: translateX(-5rem) scale(1,1);}
+    50% {transform: translateX(-5rem) scale(-1,1);}
+    100%{transform: translateX(15rem) scale(-1,1);}
+}
+@-o-keyframes MoveRtoL{
+    0%  { -o-transform: translateX(15rem); }
+    49% { -o-transform: translateX(-5rem) scale(1,1);}
+    50% { -o-transform: translateX(-5rem) scale(-1,1);}
+    100%{ -o-transform: translateX(15rem) scale(-1,1); }
+}
+@-moz-keyframes MoveRtoL{
+    0%  { -moz-transform: translateX(15rem); }
+    49% { -moz-transform: translateX(-5rem) scale(1,1);}
+    50% { -moz-transform: translateX(-5rem) scale(-1,1);}
+    100%{ -moz-transform: translateX(15rem) scale(-1,1); }
+}
+/*从下到上*/
+@-webkit-keyframes MoveBtoT {
+    0%  { -webkit-transform: translateY(100vh); }
+    50% {-webkit-transform:  translateY(40vh);}
+    100%{ -webkit-transform: translateY(100vh); }
+}
+@keyframes MoveBtoT {
+    0%  {  transform: translateY(100vh);}
+    50% {transform:   translateY(40vh) }
+    100%{  transform: translateY(100vh) }
+}
+@-o-keyframes MoveBtoT{
+    0%  { -o-transform: translateY(100vh); }
+    50% { -o-transform: translateY(40vh);}
+    100%{ -o-transform: translateY(100vh); }
+}
+@-moz-keyframes MoveBtoT {
+    0%  { -moz-transform: translateY(100vh); }
+    50% { -moz-transform: translateY(40vh);}
+    100%{ -moz-transform: translateY(100vh); }
+}
+/*颜色变换*/
+@-webkit-keyframes startColor {
+    0%  { color: #fff;}
+    33%{ color: #fff;}
+    34%{ color: #ff316f;}
+    66%{ color: #ff316f;}
+    67%{ color: #fff;}
+    99%{ color: #fff;}
+    100%{ color: #ff316f;}
+}
+@keyframes startColor {
+    0%  { color: #fff;}
+    33%{ color: #fff;}
+    34%{ color: #ff316f;}
+    66%{ color: #ff316f;}
+    67%{ color: #fff;}
+    99%{ color: #fff;}
+    100%{ color: #ff316f;}
+}
+@-o-keyframes startColor {
+    0%  { color: #fff;}
+    33%{ color: #fff;}
+    34%{ color: #ff316f;}
+    66%{ color: #ff316f;}
+    67%{ color: #fff;}
+    99%{ color: #fff;}
+    100%{ color: #ff316f;}
+}
+@-moz-keyframes startColor {
+    0%  { color: #fff;}
+    33%{ color: #fff;}
+    34%{ color: #ff316f;}
+    66%{ color: #ff316f;}
+    67%{ color: #fff;}
+    99%{ color: #fff;}
+    100%{ color: #ff316f;}
+}
+/*舌头*/
+@-webkit-keyframes tongue {
+    0%      { -webkit-transform: rotate(0deg);}
+    25%     { -webkit-transform: rotate(20deg);}
+    50%     { -webkit-transform: rotate(0deg);}
+    75%     { -webkit-transform: rotate(-20deg);}
+    100%    { -webkit-transform: rotate(0deg);}
+}
+@keyframes tongue {
+    0%      { transform: rotate(0deg);}
+    25%     { transform: rotate(20deg);}
+    75%     { transform: rotate(-20deg);}
+    100%    { transform: rotate(0deg);}
+}
+@-o-keyframes tongue {
+    0%      { -o-transform: rotate(0deg);}
+    25%     { -o-transform: rotate(20deg);}
+    50%     { -o-transform: rotate(0deg);}
+    75%     { -o-transform: rotate(-20deg);}
+    100%    { -o-transform: rotate(0deg);}
+}
+@-moz-keyframes tongue {
+    0%      { -moz-transform: rotate(0deg);}
+    25%     { -moz-transform: rotate(20deg);}
+    50%     { -moz-transform: rotate(0deg);}
+    75%     { -moz-transform: rotate(-20deg);}
+    100%    { -moz-transform: rotate(0deg);}
+}
+/*眼睛旋转*/
+@-webkit-keyframes eyesRotate {
+    0%      { -webkit-transform: rotate(0deg); }
+    100%    { -webkit-transform: rotate(30deg); }
+}
+@keyframes eyesRotate {
+    0%      { transform: rotate(0deg); }
+    100%    {transform: rotate(30deg); }
+}
+@-o-keyframes eyesRotate {
+    0%      { -o-transform: rotate(0deg); }
+    100%    { -o-transform: rotate(30deg); }
+}
+@-moz-keyframes eyesRotate {
+    0%      { -moz-transform: rotate(0deg); }
+    100%    { -moz-transform: rotate(30deg); }
+}
+/*手 移动*/
+@-webkit-keyframes handMove {
+    0%  { -webkit-transform: translate(0,0);           }
+    100%{ -webkit-transform: translate(-.8rem,-.8rem); }
+}
+@keyframes handMove {
+    0%  { transform: translate(0,0);            }
+    100%{ transform: translate(-.8rem,-.8rem); }
+}
+@-o-keyframes handMove{
+    0%  { -o-transform: translate(0,0);           }
+    100%{ -o-transform: translate(-.8rem,-.8rem); }
+}
+@-moz-keyframes handMove{
+    0%  { -moz-transform: translate(0,0);           }
+    100%{ -moz-transform: translate(-.8rem,-.8rem); }
+}

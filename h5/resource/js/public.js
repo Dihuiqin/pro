@@ -1,4 +1,20 @@
 
+//关闭按钮功能
+var u = navigator.userAgent.toLowerCase();
+var isApple = /(iphone|ipad|ipod|ios)/i.test(u);
+var isAndroid = /android/i.test(u);
+function closeBtn() {
+    var u = navigator.userAgent.toLowerCase();
+    if(isApple){
+        //apple终端
+        window.location = 'close://';
+    }else if(isAndroid){
+        //安卓终端
+        if(window.AndroidBridge){
+            window.AndroidBridge.close();
+        }
+    }
+}
 /*-------------------------*/
 var mark = 1;
 $(function () {
