@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="feedback">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>520-鲨鱼吸金</title>
+  <meta name="keywords" content="鲨鱼吸金">
+  <meta name="description" content="鲨鱼吸金">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/sharkCoin.css" rel="stylesheet" />
+</head>
+<body>
+<div id="aaa"></div>
+<audio id="audio1" loop>
+  <source src="resource/audio/8563.ogg" type="audio/ogg">
+  <source src="resource/audio/8563.m4a" type="audio/mpeg">
+  <source src="resource/audio/8563.mp3" type="audio/mpeg">
+</audio>
+<!--提示教程 & 结果  第一层-->
+<div id="coinGuide">
+  <div class="maskBg"></div>
+  <div id="firstClose" class="pngImg close"><p>退出</p></div>
+  <div class="guideBg pngImgB">
+    <div class="guideTxt">在规定时间内，点击小鲨越多所得金币越多哦~</div>
+  </div>
+  <div id="guideKnow" class="button pngImg">START</div>
+  <div id="hand" class="pngImgB"></div>
+</div>
+<div id="gameOver">
+  <div class="maskBg"></div>
+  <div class="resultDialog">
+    <div id="close" class="pngImgB"></div>
+    <div id="resultOk" class="result">
+      <div class="resultBg pngImgB"><span class="prize">3</span>￥</div>
+      <div class="resultTxt">
+        <p class="Txt">恭喜您，获得<span class="prize">3</span>元无门槛礼金券</p>
+        <p class="viceTxt">请在“我的”-“礼金券”中查看</p>
+        <div class="btnGroup">
+          <a id="gomain" class="resultBtn" href="">主会场</a>
+          <div id="share" class="resultBtn">分享</div>
+        </div>
+      </div>
+    </div>
+    <div id="resultError" class="result">
+      <div class="resultBg pngImgB"></div>
+      <div class="resultTxt">
+        <p class="Txt">糟糕，小鲨木有吃到美味的金币，</p>
+        <p class="viceTxt">请点击<span>start</span>再试一次哦~</p>
+        <div class="btnGroup">
+          <a class="resultBtn close" >我知道了</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--音乐开关-->
+<div id="audioSwitch" class="pngImg"><p>静音</p></div>
+<!--得分/倒计时 第二层-->
+<div id="coinData" >
+  <div class="coinScore">
+    <span class="dataScore pngImg"></span>
+    <span id="dataScore" class="dataBg ">0</span>
+  </div>
+  <div class="coinCountdown">
+    <span class="dataCD pngImg"></span>
+    <span id="dataCD" class="dataBg">15</span>
+  </div>
+  <div id="coinBtn" class="button pngImg">START</div>
+</div>
+<!--蒙层/鲨鱼嘴 第三层-->
+<div id="coinMask">
+  <div class="pinkMaskBg"></div>
+  <div class="shark pngImgB">
+    <div class="eyes pngImgB eyesL"></div>
+    <div class="eyes pngImgB eyesR"></div>
+    <div class="tongue pngImgB"></div>
+  </div>
+  <div class="plants"></div>
+</div>
+<!--背景 游鱼 最下层-->
+<div id="coinBg">
+  <div class="pinkFish fish"></div>
+  <div class="pinkFish2 fish"></div>
+  <div class="blueFish fish"></div>
+  <div class="jellyFish fish"></div>
+  <div class="goldFish fish"></div>
+  <div class="moreFish fish"></div>
+</div>
+<!--金币 第四层-->
+<div id="coin"></div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script src="resource/js/sharkCoin.js"></script>
+<script>
+  var coin = $('#coin');
+  var $coins = [];
+  /*游戏结束*/
+  function gameOver(finalScore) {
+    /*-------------------------*/
+    var data = sharkCoin('getResult',finalScore);
+    var prizeNum = 0;
+    $('#gameOver').show();
+    $('#resultOk').show();
+    $('#audioSwitch').hide();
+    switch(data.prizetype){
+      case 1 : {   //一等奖 15元
+        prizeNum = 15;
+      }break;
+      case 2 : {   //二等奖 10元
+        prizeNum = 10;
+      }break;
+      case 3 :{   //三等奖 7元
+        prizeNum = 7;
+      }break;
+      case 4 : {   //四等奖 5元
+        prizeNum = 5;
+      }break;
+      case 5 : {   //五等奖 3元礼金券
+        prizeNum = 3;
+      }break;
+      default:{   //未中奖
+        $('#resultOk').hide();
+        $('#resultError').show();
+      }break;
+
+    }
+    document.getElementById("audio1").pause();
+    $('.prize').html(prizeNum);
+    myShare(prizeNum);
+    //未中奖
+    // $('#resultError').show();
+  }
+  //分享功能
+  function myShare(prize) {
+    var shareOb = JSON.stringify({
+      "title": '我获得了' + prize+'元无门槛礼金券',
+      "desc": '这游戏有毒，一玩就能领红包，快来抢～',
+      "link": '{pigcms::$wxtest}redrain.php?prize='+prize,
+      "imgUrl": 'resource/images/sharkCoin/share.jpg'
+    });
+    $("#share").on('touchend',function () {
+      //添加动画效果
+      //调用app方法
+      if (typeof app !== 'undefined' && app.share) {
+        app.share(shareOb);
+      } else {
+        alert('请更新到最新版本');
+      }
+    });
+  }
+
+  var timer;
+  $('body').on('touchend', function() {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      $('#audioSwitch').css('background-position','-2.227rem -2.667rem');
+      $('#audioSwitch p').html('音乐');
+      document.getElementById("audio1").pause();
+    }, 3000);
+  });
+
+</script>
+</body>
+</html>

@@ -16,7 +16,14 @@ function sharkIce(data,param) {
       }
       return result
     }break;
-    case 2 : {   //
+    default:{   //未中奖
+      result.prizetype = 5
+    }break;
+  }
+}
+function sharkCoin(data,param) {
+  switch(data){
+    case 'getResult' : {   //中奖结果
       var result = {};
       if(param>200){
         result.prizetype = 1
@@ -31,19 +38,8 @@ function sharkIce(data,param) {
       }
       return result
     }break;
-    case 3 :{   //三等奖
-      prizeNum ='299减50优惠券';
-    }break;
-    case 4 : {   //四等奖
-      prizeNum = '';
-    }break;
-    case 5 : {   //五等奖
-      prizeNum ='5元无门槛券 ';
-    }break;
     default:{   //未中奖
-      $('#resultCoupon').hide();
-      $('#resultGoods').hide();
-      $('#resultError').show();
+      result.prizetype = 5
     }break;
   }
 }
