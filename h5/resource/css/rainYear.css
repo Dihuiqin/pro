@@ -1,0 +1,110 @@
+
+#redRain{ width: 10rem; height: 100%; margin: 0 auto; overflow: hidden;background: url("../images/rainYear/bg.png") no-repeat top center ; background-size:10rem 17.787rem;}
+#redRain_bg{ position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    filter: alpha(opacity=85);
+    -moz-opacity: 0.85;
+    -khtml-opacity: 0.85;
+    opacity: 0.85;
+    background: #000 none repeat scroll 0 0;
+}
+/*雪花背景*/
+.snow{ position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden;}
+.snowbg{ position: absolute; background-image:url('../images/rainYear/snow.png');background-size:1.667rem 3.92rem;}
+.snow1{ top:0.667rem; left:1.333rem;width:1.267rem;height:1.147rem;background-position: 0 -1.293rem;}
+.snow2{ top:2.933rem; right:0;width:0.8rem;height:0.787rem;background-position: 0 -0.507rem;}
+.snow3{ top:10.4rem; left:0;width:1.667rem;height:1.48rem;background-position: 0 -2.44rem;}
+.snow4{ top:15.013rem; left:2.493rem;width:0.56rem;height:0.507rem;background-position: 0 0;}
+.snow5{ top:15.867rem; right:0.333rem;width:1.267rem;height:1.147rem;background-position: 0 -1.293rem;}
+/*红包大小*/
+.envelopeBg{position:absolute;background-image:url('../images/rainYear/red.png'); background-size:2.693rem 11.24rem;}
+.envelope_bigger{z-index:3;width:2.693rem;height:3.52rem;background-position: 0 0;}
+.envelope_big{z-index:2; width:2.693rem;height:2.907rem;background-position: 0 -3.52rem;}
+.envelope_small{z-index:1; width:2.693rem;height:2.533rem;background-position: 0 -6.56rem;}
+.envelope_smaller{z-index:0; width:2.693rem;height:2.147rem;background-position: 0 -9.093rem;}
+
+.redRain_Wrap { width: 100%; height: 100%; position: absolute; overflow: hidden; }
+/*弹窗*/
+.gameOver,.dislogMask{ width: 10rem; height: 100%; position: absolute;top:0;left: 0;}
+.win,.notWin{ width:7.333rem; height: 8.52rem;  margin:0 auto;position: absolute; top:0;left:0;right: 0;bottom:0; background: url("../images/rainYear/redBg.png") no-repeat top left; background-size: 7.333rem 8.52rem; text-align: center; }
+.win_bann,.notWin_bann{ margin:0 auto; position: absolute;left:0;right: 0; }
+.win_bann{ top:-1.8rem; background-image:url('../images/rainYear/no.png');background-size:6.56rem 9.16rem;height:4rem;width:6.347rem;background-position: 0 -4rem;}
+.notWin_bann{ top:-2.08rem; background-image:url('../images/rainYear/no.png');background-size:6.56rem 9.16rem;height:3.987rem;width:4.387rem;background-position: 0 0;}
+.dialog_btn{ width:6.56rem; height: 1.147rem; line-height: 1.147rem; margin: auto; position: absolute; bottom: 0.467rem;left:0;right:0; display: inline-block; background:#fec535;border-radius: 1.147rem; font-size: 20px; font-weight: bold; color:#fc4c4f;}
+
+.dialog_con{ width: 100%;color: #fff; letter-spacing: 1px;}
+.dialog_con p{ margin-top: 3.413rem; overflow: hidden}
+.dialog_con span{ width: 100%; display: inline-block; margin-top: 0.667rem; }
+.dialog_con span:last-child{margin-top: 0.467rem; }
+.win hr{ color: #fff; width: 3rem; height: 0; border-top:1px #fff solid; border-bottom: none;border-left: 0; border-right: 0; margin: 0.22rem auto  0.23rem; opacity: .6;}
+.win .winP{ margin-top: 2.96rem;}
+.win .giftCard{margin-top: 0.5rem;}
+.win .preDeposit{margin-top: 0;}
+.win span.instr{margin: auto; position: absolute; bottom: 2.034rem;left:0;right:0; }
+.font40 { font-size: 20px; line-height: 20px;height: 20px;}
+.font36 { font-size: 18px; line-height: 18px;height: 18px;}
+.font28 { font-size: 14px; line-height: 14px;height: 14px;}
+[data-dpr="2"] .font36 { font-size: 36px; line-height: 36px; height: 36px;}
+[data-dpr="3"] .font36 { font-size: 54px; line-height: 54px; height: 54px;}
+[data-dpr="2"] .font40 { font-size: 40px; line-height: 40px; height: 40px;}
+[data-dpr="3"] .font40 { font-size: 60px; line-height: 60px; height: 60px;}
+[data-dpr="2"] .font28 { font-size: 28px; line-height: 28px; height: 28px;}
+[data-dpr="3"] .font28 { font-size: 42px; line-height: 42px; height: 42px;}
+[data-dpr="2"] .dialog_btn { font-size: 40px;}
+[data-dpr="3"] .dialog_btn { font-size: 60px;}
+
+.dislog_timeout,.dislog_noChance{ width: 4.387rem; height: 3.533rem; margin:0 auto; position: absolute;left:0;right: 0;top:-1.8rem; }
+.dislog_timeout{ background: url("../images/rainYear/start.png") no-repeat top center;background-size:100% 100%;}
+.dislog_noChance{background: url("../images/rainYear/already.png") no-repeat top center;background-size:100% 100%;}
+/*开始前倒计时*/
+.time{ width: 3.76rem; height: 3.76rem; overflow:hidden; margin-top: 0.8rem;}
+.time{ position: relative; }
+.timeTxt{ width:2.107rem; height: 0.6rem; margin: 0 auto;}
+.timeTxt img{ width:2.107rem; height: 0.6rem;  overflow: hidden}
+.clickResultDown{-moz-transition:all .3s ease-in;-webkit-transition:all .3s ease-in;-o-transition:all .3s ease-in;transition:all .3s ease-in}
+/*rem*/
+.timingBtn{margin:auto;z-index: 3;position: absolute; right:0.667rem;top:0.547rem; background-image:url('../images/rainYear/no.png');background-size:6.56rem 9.16rem;height:1.2rem;width:1.2rem;background-position:right 0;}
+.timeBg{background-image:url('../images/rainYear/time.png');background-size:4.76rem 3.48rem;}
+.timeTxt{height:0.933rem;width:3.347rem;background-position: 0 -2.547rem;}
+.timer1{height:2.52rem;width:0.867rem;background-position: 0 0;}
+.timer2{height:2.28rem;width:2.107rem;background-position: -2.667rem 0;}
+.timer3{height:2.533rem;width:1.787rem;background-position: -0.867rem 0;}
+/*进行时倒计时*/
+.timeBC{ width: 1.813rem;height: 1.813rem; position: absolute; top:0.413rem;left:0.533rem;z-index: 1;}
+.timeSC,.timing{ width: 1.547rem;height: 1.547rem; margin:auto;z-index: 3;position: absolute; left:0.667rem;top:0.547rem; }
+.timeSC,.timeBC{ border-radius: 50%; background: #e91e2c;  opacity: .25; }
+.timing{font-size: 0.64rem;color: #fff; text-align: center; line-height: 1.547rem;}
+/*animals*/
+.clicked{ display: none; }
+.timeArea{width:3.76rem;height:5.227rem;text-align:center;margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;-webkit-animation:countDown .2s linear 2.2s both;animation:countDown .2s linear 2.2s both;-moz-animation:countDown .2s linear 2.2s both;-o-animation:countDown .2s linear 2.2s both;-ms-animation:countDown .2s linear 2.2s both}
+.timer3,.timer2,.timer1{margin:auto; position: absolute; top:0;left:0;right: 0;bottom:0;}
+@-webkit-keyframes countDown{0%{-moz-transform:scale(1,1);-webkit-transform:scale(1,1);-o-transform:scale(1,1);transform:scale(1,1);-ms-transform:scale(1,1)}
+    100%{-moz-transform:scale(0,0);-webkit-transform:scale(0,0);-o-transform:scale(0,0);transform:scale(0,0);-ms-transform:scale(0,0)}
+}
+@keyframes countDown{0%{-moz-transform:scale(1,1);-webkit-transform:scale(1,1);-o-transform:scale(1,1);transform:scale(1,1);-ms-transform:scale(1,1)}
+    100%{-moz-transform:scale(0,0);-webkit-transform:scale(0,0);-o-transform:scale(0,0);transform:scale(0,0);-ms-transform:scale(0,0)}
+}
+.clickResult{width:4.867rem;height:3.693rem;z-index:1;-moz-animation:clickResult 1s linear both;-webkit-animation:clickResult 1s linear both;-o-animation:clickResult 1s linear both;-ms-animation:clickResult 1s linear both;animation:clickResult 1s linear both}
+.clickResult img{width:100%;max-width:1.56rem;height:auto}
+/*点击结果显示*/
+@-webkit-keyframes clickResult {
+    0% {    -moz-transform:scale(0,0); -webkit-transform: scale(0,0); -o-transform: scale(0,0);transform: scale(0,0);-ms-transform: scale(0,0);}
+    30%  { -moz-transform: scale(1,1); -webkit-transform: scale(1,1); -o-transform: scale(1,1);transform: scale(1,1);-ms-transform: scale(1,1);}
+    90%  { -moz-transform: scale(1,1); -webkit-transform: scale(1,1); -o-transform: scale(1,1);transform: scale(1,1);-ms-transform: scale(1,1);}
+    100% { -moz-transform: scale(0,0); -webkit-transform: scale(0,0); -o-transform: scale(0,0);transform: scale(0,0);-ms-transform: scale(0,0);}
+}
+@keyframes clickResult {
+    0% {    -moz-transform:scale(0,0); -webkit-transform: scale(0,0); -o-transform: scale(0,0);transform: scale(0,0);-ms-transform: scale(0,0);}
+    30%  { -moz-transform: scale(1,1); -webkit-transform: scale(1,1); -o-transform: scale(1,1);transform: scale(1,1);-ms-transform: scale(1,1);}
+    90%  { -moz-transform: scale(1,1); -webkit-transform: scale(1,1); -o-transform: scale(1,1);transform: scale(1,1);-ms-transform: scale(1,1);}
+    100% { -moz-transform: scale(0,0); -webkit-transform: scale(0,0); -o-transform: scale(0,0);transform: scale(0,0);-ms-transform: scale(0,0);}
+}
+/*中奖结果通知*/
+@-webkit-keyframes clickResultDown {
+    0%  { -moz-transform: translate(0,-500); -webkit-transform: translate(0,-500); -o-transform: translate(0,-500);transform: translate(0,-500);-ms-transform: translate(0,-500);}
+    100% { -moz-transform: translate(0,0);-webkit-transform: translate(0,0);-o-transform: translate(0,0);transform: translate(0,0);-ms-transform: translate(0,0);}
+}
+@keyframes clickResultDown {
+    0%  { -moz-transform: translate(0,-500); -webkit-transform: translate(0,-500); -o-transform: translate(0,-500);transform: translate(0,-500);-ms-transform: translate(0,-500);}
+    100% { -moz-transform: translate(0,0);-webkit-transform: translate(0,0);-o-transform: translate(0,0);transform: translate(0,0);-ms-transform: translate(0,0);}
+}
+

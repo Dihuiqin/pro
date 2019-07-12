@@ -1,0 +1,124 @@
+
+body{font-family:'黑体';}
+#redRain{ width: 10rem; height: 100%; background: url("../images/rainNov/redRain_bg.png") no-repeat top center ; background-size:10rem 17.787rem;}
+.redRain_Wrap,.redRain_bg { width: 100%; height: 100%; position: absolute; overflow: hidden;}
+.coin { width: .5rem; height: auto; overflow: hidden;  position: absolute; -webkit-user-select: none; border: none; }
+.envelope { width: 1rem; height: auto; overflow: hidden;  position: absolute; -webkit-user-select: none; border: none; z-index: 3; }
+.timeWrap{ width: 2.0rem;height: 2.0rem; border-radius: 50%; background: #000;  opacity: .15;z-index: 2; position: absolute; top:0.267rem;left:0.267rem;}
+.timeChange,.timing{ width: 1.6rem;height: 1.6rem;margin:auto;z-index: 3;position: absolute; top:0.467rem;left:0.467rem;}
+.timeChange{ border-radius: 50%; background: #000;  opacity: .15;}
+.timing{font-size: 0.64rem;color: #fff; text-align: center; line-height: 1.6rem;font-family:Arial,'黑体';}
+.gameOver{ width: 10rem; height: 100%; position: absolute;top:0;left: 0;}
+.win,.notWin{ width:6.667rem; height: 8.533rem; margin:0 auto;position: absolute; top:-8.533rem;left:0;right: 0;bottom:0; border-radius:0.267rem; -webkit-box-shadow:0 0 0.133rem #961ef5;-moz-box-shadow:0 0 0.133rem #961ef5; box-shadow:0 0 0.133rem #961ef5; }
+.win{background: url("../images/rainNov/win.png") no-repeat; background-size: 100% 100%;}
+.notWin{background: url("../images/rainNov/notWin.png") no-repeat; background-size: 100% 100%;}
+.giftCard,.preDeposit{ width:2.933rem; height: 0.933rem; line-height: 0.933rem; position: relative; font-size: 0.48rem;font-weight: bold; letter-spacing: 1px;}
+.giftCard span,.preDeposit span{ color: #961ef5; }
+.giftCard{top:3.547rem;left:2.867rem;}
+.preDeposit{ top:4.267rem;left:2.867rem;}
+.win_btn,.notWin_btn{ width:5.867rem; height: 1.333rem; margin: 0 auto; position: absolute;top: 7.147rem; left: 0;right: 0;}
+.will{ width:4.0rem; height: 0.933rem; line-height:1.1rem;  margin: 0 auto 0; position: absolute;top: 6.326rem; left: 0;right: 0; text-align: center; font-size: 12px;}
+[data-dpr="2"] .will{			font-size: 24px;		}
+[data-dpr="3"] .will{			font-size: 36px;		}
+.win_btn{ background: url("../images/rainNov/win_btn.png") no-repeat; background-size: 100% 100%;}
+.notWin_btn{ background: url("../images/rainNov/notWin_btn.png") no-repeat; background-size: 100% 100%;}
+.close{ width: 1.067rem;height:1.52rem; margin: 0 auto;  background: url("../images/rainNov/close.png") no-repeat; background-size: 100% 100%; position: absolute;top: 13.56rem; left: 0;right: 0; }
+.time,.time_bg{ width: 3.76rem; height: 3.76rem; overflow:hidden; margin-top: 0.8rem;}
+.time{ position: relative; }
+.timeTxt{font-family:'黑体'; font-size: 18px; color: #fff;}
+[data-dpr="2"] .timeTxt{			font-size: 36px;		}
+[data-dpr="3"] .timeTxt{			font-size: 54px;		}
+.clickResultDown{
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+.time_bg{ position: absolute; background: url("../images/rainNov/circular.png") no-repeat; background-size: 100% 100%;
+    -webkit-animation: changeRotate 3s linear both;
+    animation: changeRotate 3s linear both;}
+/*倒计时外框*/
+@-webkit-keyframes changeRotate {
+    0%  { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% { -webkit-transform: rotate(1080deg);transform: rotate(1080deg);}
+}
+@keyframes changeRotate {
+    0%  { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% { -webkit-transform: rotate(1080deg);transform: rotate(1080deg);}
+}
+
+
+/*animals*/
+.clicked{
+    z-index: 0;
+    -webkit-animation: disappear .4s linear both;
+    animation: disappear .4s linear both;
+}
+.cue{
+    z-index: 4;
+    -webkit-animation: cue .2s linear both;
+    animation: cue .2s linear both;
+}
+@-webkit-keyframes disappear {
+    0%   { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    20%   { -webkit-transform: rotate(10deg);transform: rotate(10deg);}
+    40%   { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    60%   { -webkit-transform: rotate(10deg);transform: rotate(10deg);}
+    80%  { -webkit-transform: scale(.5,.5);transform: scale(.5,.5);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+@keyframes disappear {
+    0%   { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    20%   { -webkit-transform: rotate(20deg);transform: rotate(20deg);}
+    40%   { -webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    60%   { -webkit-transform: rotate(20deg);transform: rotate(20deg);}
+    80%  { -webkit-transform: scale(.5,.5);transform: scale(.5,.5);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+
+.timeArea{ width: 3.76rem; height:5.227rem; text-align:center; margin:auto; position: absolute; top:0;left:0;right: 0;bottom:0;
+    -webkit-animation: hiddening .2s linear 2.8s both;  animation: hiddening .2s linear 2.8s both;}
+.timer3,.timer2,.timer1{margin:auto; position: absolute; top:0;left:0;right: 0;bottom:0;}
+.time img{ width: 100%;}
+.timer3{ width: 1.787rem; height: 2.36rem; }
+.timer2{ width: 1.653rem; height: 2.24rem;}
+.timer1{ width: 0.747rem; height: 2.333rem;}
+@-webkit-keyframes hiddening {
+    0%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+@keyframes hiddening {
+    0%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+.cue{
+    width: 1.56rem ; height: .813rem;
+    -webkit-animation: cue 1s linear both;
+    animation: cue 1s linear both;
+}
+.cue img{
+    width:100%;max-width: 1.56rem ; height: auto;
+}
+/*中奖结果通知*/
+@-webkit-keyframes cue {
+    0%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    99%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+@keyframes cue {
+    0%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    99%  { -webkit-transform: scale(1,1);transform: scale(1,1);}
+    100% { -webkit-transform: scale(0,0);transform: scale(0,0);}
+}
+/*中奖结果通知*/
+@-webkit-keyframes clickResultDown {
+    0%  { -webkit-transform: translate(0,-500);transform: translate(0,-500);}
+    100% { -webkit-transform: translate(0,0);transform: translate(0,0);}
+}
+@keyframes clickResultDown {
+    0%  { -webkit-transform: translate(0,-500);transform: translate(0,-500);}
+    100% { -webkit-transform: translate(0,0);transform: translate(0,0);}
+}
+
+
+
+
+

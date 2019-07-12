@@ -1,0 +1,454 @@
+<!DOCTYPE html >
+<html >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>红包雨-16双十一</title>
+  <meta name="keywords" content="红包雨">
+  <meta name="description" content="红包雨">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/rainNov.css" rel="stylesheet" />
+</head>
+<body>
+<div id="redRain">
+	<div class ="redRain_Wrap"><div class="envelope"></div></div>
+	<div class ="redRain_bg"><div class="coin"></div></div>
+	<!--进行时倒计时-->
+	<div class="jishi">
+		<div class="timeWrap"></div>
+		<div class="timeChange"></div>
+		<div class="timing">10S</div>
+	</div>
+	<!--开始前倒计时-->
+	<div class="timeArea">
+		<div class="timeTxt" >倒计时</div>
+		<div class="time_bg"></div>
+		<div class="time">
+			<div class ="timer3"><img src="resource/images/rainNov/timer3.png" alt=""></div>
+			<div class ="timer2"><img src="resource/images/rainNov/timer2.png" alt=""></div>
+			<div class ="timer1"><img src="resource/images/rainNov/timer1.png" alt=""></div>
+		</div>
+	</div>
+	<!--游戏结束-->
+	<div class="gameOver">
+		<div class="win" style="display: none">
+			<div class="giftCard"><span></span>礼金券</div>
+			<div class="preDeposit"><span></span>预存款</div>
+			<div class="will">下场活动 <span></span>开始</div>
+			<a class="win_btn" href=""></a>
+		</div>
+		<div class="notWin" style="display: none">
+			<div class="will">下场活动 <span></span>开始</div>
+			<a class="notWin_btn" href=""></a>
+		</div>
+		<div class="close"></div>
+	</div>
+</div>
+<div class="yck" style="display: none">0</div>
+<div class="lj" style="display: none">0</div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script>
+	var yck = 0;
+	var lj = 0;
+	var dialogH = $(".win").height();
+	/*测试数据*/
+	var usenums = 0;
+	$(function () {
+		$("#redRain").css('height',$(window).height());
+		$(".close").css('top',($(window).height())/2+dialogH/2);
+		$('.jishi').hide();
+		$('.gameOver').hide();
+		$('.timer2').hide();
+		$('.timer1').hide();
+		redWill();
+		setTimeout(function(){
+			$('.timer2').show();
+			$('.timer3').hide();
+		},1000);
+		setTimeout(function(){
+			$('.timer2').hide();
+			$('.timer1').show();
+		},2000);
+	});
+	'use strict';
+	/*红包降落*/
+	(function ($) {
+		//红包初始化
+		var redEnvelope_defaults = {
+			imgSize_width: 1.56,//红包的宽度 rem
+			_class: 'envelope',//红包的样式
+			imgSrc: 'resource/images/rainNov/red.png'
+		};
+		var $envelopeObj = null;
+		var Init;
+		Init = (function () {
+			function Init(element, options) {   //element为.redRain_Wrap
+				this.$settings = $.extend({}, $.fn.redEnvelope.defaults, options);
+				this.$element = $(element);
+				this.init();
+			}
+			//游戏初始化
+			Init.prototype.init = function () {
+				if (this.$settings != undefined || this.$settings != null) {
+					for (var option in this.$settings) {
+						redEnvelope_defaults[option] = this.$settings[option];
+					}
+				}
+				$envelopeObj = this.$element;
+				gameInit();
+			};
+			return Init;
+		})();
+		$.fn.redEnvelope = function (options, $arg) {
+			var retrunValue = null;
+			this.each(function () {
+				var $me = $(this),
+						instance = $me.data('redEnvelope');
+				if (!instance) {
+					$me.data('redEnvelope', new Init(this, options));
+				}
+				if ($.type(options) === 'string') {
+					retrunValue = instance[options]($arg);
+				}
+				if (retrunValue === null) {
+					return this;
+				} else {
+					return retrunValue;
+				}
+			});
+		};
+		//游戏初始化属性
+		$.fn.redEnvelope.defaults = {
+			clickFun: function () {
+				$(this).off("touchend",redEnvelope_defaults.clickFun);
+				$(this).animate().stop().addClass("clicked");
+				$(this).attr('z-index', "0");
+				$(this).attr('data-value', "1");
+				var on = $(this).attr('data-value');
+				var redT = ($(this).offset().top)-40;
+				var redL = $(this).offset().left;
+				var resultImg;
+				//ajax请求数据
+				if(on>0){
+					$(this).attr('data-value', "0");
+          var data = rainNov('getResult');
+          switch(data.prizetype){
+            case 1 :{
+              resultImg = "yck10.png";   //预存款10元
+              yck += 10;
+              if(yck>10){
+                yck -= 10;
+                resultImg = "wzj.png";
+              }
+              lj += 0;
+            }break;
+            case 2 : {
+              yck += 5;
+              resultImg = "yck5.png";   //预存款5元
+              if(yck>10){
+                yck -= 5;
+                resultImg = "wzj.png";
+              }
+              lj += 0;
+            }break;
+            case 3 : {
+              yck += 3;
+              resultImg = "yck3.png";
+              if(yck>10){
+                yck -= 3;
+                resultImg = "wzj.png";
+              }
+              lj += 0;
+            }break;
+            case 4 :{
+              lj += 200;
+              yck += 0;
+              resultImg = "lj200.png";   //礼金200元
+            }break;
+            case 5 : {
+              lj += 150;
+              yck += 0;
+              resultImg = "lj150.png";    //礼金150元
+            }break;
+            case 6 : {
+              lj += 100;
+              yck += 0;
+              resultImg = "lj100.png";   //礼金100元
+            }break;
+            case 7 : {
+              lj += 70;
+              yck += 0;
+              resultImg = "lj70.png";  //礼金70元
+            }break;
+            case 8 : {
+              lj += 50;
+              yck += 0;
+              resultImg = "lj50.png";  //礼金50元
+            }break;
+            case 9 :{
+              lj += 30;
+              yck += 0;
+              resultImg = "lj30.png";   //礼金30元
+            }break;
+            case 0 : {
+              resultImg = "wzj.png";  //无中奖
+              setTimeout(function(){
+                result(resultImg,redT,redL);
+              },400);
+            } break;
+          }
+          $('.yck').html(yck);
+          $('.lj').html(lj);
+          setTimeout(function(){
+            result(resultImg,redT,redL);
+          },400);   //预存款3元
+				}
+			}
+		};
+		var envInterval = null;
+		function gameInit() {
+			//红包初始化
+			envInterval = setInterval(InitEnv, 500);
+			/*红包雨进行时间*/
+			setTimeout(function(){
+				clearInterval(envInterval);
+			},10000);
+		}
+		function InitEnv() {
+			var imgEnv = document.createElement('img');
+			imgEnv.src = redEnvelope_defaults.imgSrc;
+			imgEnv.style.width = redEnvelope_defaults.imgSize_width + 'rem';
+			imgEnv.setAttribute('class', redEnvelope_defaults._class);
+			imgEnv.setAttribute('data-value', "1");
+			/*监听红包被点击事件*/
+			/*imgEnv.addEventListener('touchend', redEnvelope_defaults.clickFun);*/
+			$(imgEnv).one("touchend",redEnvelope_defaults.clickFun);
+			evnPosition(imgEnv, $envelopeObj);
+		}
+
+		function evnPosition(img) {
+			var containerWidth = $envelopeObj.width();
+			/*var containerHeight = window.screen.height;*/
+			$(this).attr('z-index', "0");
+			var containerHeight = $(window).height();
+			$envelopeObj.prepend(img);
+			//红包初始的位置
+			var startTop = parseInt(Math.random() * 10 + (-10));  //-10-0
+			var startLeft = parseInt(Math.random() * containerWidth);
+			//移动的位置
+			var moveLeft = parseInt(Math.random() * containerWidth + (-(containerWidth / 2)));   //???
+			var time = parseInt(Math.random() * 1000 + 1200); //4000-5000
+			evnAnimation({
+				'startLeft': startLeft,
+				'startTop': startTop,
+				'moveLeft': moveLeft,
+				'moveTop': containerHeight
+			}, time);
+		}
+		/*添加元素到主内容上*/
+		function evnAnimation(posObject, time) {
+			$envelopeObj.children('img:first').css({'left': posObject.startLeft, 'top': posObject.startTop});
+			$envelopeObj.children('img:first').animate(
+					{
+						'left': posObject.startLeft - posObject.moveLeft,
+						'top': posObject.moveTop
+					},
+					time,
+					'linear',
+					function () {
+						$(this).remove();
+					}
+			);
+
+		}
+	})($);
+	/*金币coin*/
+	(function ($) {
+		//金币初始化
+		var coinEnvelope_defaults = {
+			coinSize_width: .7,
+			_coinClass: 'coin',
+			coinSrc : 'resource/images/rainNov/coin.png'
+		};
+		var $coinObj = null;
+		var Init;
+		Init = (function () {
+			function Init(element) {   //element为.redRain_bg
+				this.$element = $(element);
+				this.init();
+			}
+			//游戏初始化
+			Init.prototype.init = function () {
+				$coinObj = this.$element;
+				gameInit();
+			};
+
+			return Init;
+		})();
+		$.fn.coinEnvelope = function (options, $arg) {
+			var retrunValue = null;
+			this.each(function () {
+				var $me = $(this),
+						instance = $me.data('coinEnvelope');
+				if (!instance) {
+					$me.data('coinEnvelope', new Init(this, options));
+				}
+				if ($.type(options) === 'string') {
+					retrunValue = instance[options]($arg);
+				}
+				if (retrunValue === null) {
+					return this;
+				} else {
+					return retrunValue;
+				}
+			});
+		};
+		var coinInterval = null;
+
+		function gameInit() {
+			//金币初始化
+			coinInterval = setInterval(InitCoin, 400);
+			/*金币进行时间*/
+			setTimeout(function(){
+				clearInterval(coinInterval);
+			},11000);
+		}
+
+		function InitCoin() {
+			var imgEnv = document.createElement('img');
+			imgEnv.src = coinEnvelope_defaults.coinSrc;
+			imgEnv.style.width = coinEnvelope_defaults.coinSize_width + 'rem';
+			imgEnv.setAttribute('class', coinEnvelope_defaults._coinClass);
+			coinPosition(imgEnv, $coinObj);
+		}
+
+		function coinPosition(img) {
+			var containerWidth = $coinObj.width();
+			var containerHeight =  $(window).height();
+			$coinObj.prepend(img);
+			//红包初始的位置
+			var startTop = parseInt(Math.random() * 10 + (-10));  //-10-0
+			var startLeft = parseInt(Math.random() * containerWidth);
+			//移动的位置
+			var time = parseInt(Math.random() * 1000 + 1200); //1200-2200
+			coinAnimation({
+				'startLeft': startLeft,
+				'startTop': startTop,
+				'moveTop': containerHeight
+			}, time);
+		}
+		/*添加元素到主内容上*/
+		function coinAnimation(posObject, time) {
+			$coinObj.children('img:first').css({'left': posObject.startLeft, 'top': posObject.startTop});
+			$coinObj.children('img:first').animate(
+					{
+						'top': posObject.moveTop
+					},
+					time,
+					'linear',
+					function () {
+						$(this).remove();
+					}
+			);
+
+		}
+	})($);
+	/*中奖显示*/
+	function result(resultImg,redT,redL) {
+		var div = "<img class='cue' style=' color:#fff;position:absolute;top:"+redT+"px;left:"+redL+"px;' src='resource/images/rainNov/"+resultImg+"' />";//定义DIV的样式
+		$('.redRain_Wrap').append(div);
+	}
+	/*游戏进行时倒计时*/
+	function timing() {
+		var i=10;
+		$('.timing').html(i+'S');
+		timing = setInterval(function(){
+			i--;
+			$('.timing').html(i+'S');
+		},1000);
+	}
+	setTimeout(function(){
+		$('.jishi').show();
+		timing();
+		$('.redRain_Wrap').redEnvelope();
+		$('.redRain_bg').coinEnvelope();
+
+	},3000);
+	setTimeout(function(){
+		clearInterval(timing);
+	},14000);
+	setTimeout(function(){
+		var yck = $('.yck').html();
+		var lj = $('.lj').html();
+		$('.redRain_Wrap').unbind("click");
+		win(yck,lj);
+	},15500);
+	/*中奖结果*/
+	function win(yck,lj) {
+		$('.jishi').hide();
+		$('.gameOver').show();
+		$('.gameOver').css('z-index','4');
+		$('.giftCard span').html('0');
+		$('.preDeposit span').html('0');
+		var a = ($(window).height())/2-dialogH/2;
+		if(yck == 0 && lj == 0){
+			$('.win').hide();
+			$('.notWin').show().addClass('clickResultDown').css('top',a);
+		}else if(yck != 0 || lj != 0){
+			$('.notWin').hide();
+			$('.win').show().addClass('clickResultDown').css('top',a);
+			//$('.will span').html('14:00');
+			if(lj !== 0){
+				$('.giftCard span').html(lj);
+			}
+			if(yck !== 0){
+				$('.preDeposit span').html(yck);
+			}
+		}
+	}
+	/*下场预告*/
+	function redWill() {
+		$('.will span').html('10:00');
+		var myDay = '{pigcms::$day}';
+		var myTime = '{pigcms::$hour}';
+		var myNext = '{pigcms::$next}:00';
+		if(myDay == 9||myDay == 10||myDay == 11){
+			console.log(myNext);
+			$('.will span').html(myNext);
+			if(myTime>=23 ){
+				console.log(myDay);
+				if(myDay == 9||myDay == 10){
+					$('.will').html('下场活动 明天'+myNext+'再来抢');
+				}
+				if(myDay == 11){
+					$('.will').html(' ');
+				}
+			}
+
+		}
+
+	}
+	//关闭按钮
+	var u = navigator.userAgent.toLowerCase();
+	var isApple = /(iphone|ipad|ipod|ios)/i.test(u);
+	var isAndroid = /android/i.test(u);
+	$('.close').on('click',function(){
+		var u = navigator.userAgent.toLowerCase();
+		if(isApple){
+			//apple终端
+			window.location = 'close://';
+		}else if(isAndroid){
+			//安卓终端
+			if(window.AndroidBridge){
+				window.AndroidBridge.close();
+			}
+		}
+	});
+</script>
+</body>
+</html>
