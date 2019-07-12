@@ -1,4 +1,4 @@
-html,body{ width: 10rem; height: 100vh; overflow: hidden}
+/*html,body{ width: 10rem; height: 100vh; overflow: hidden} 加上会导致刷新样式错乱*/
 body{font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; color: #fff;}
 #coinMask,#coinData,#coinGuide,#gameOver,#coinBg,.maskBg{ width: 10rem; height: 100vh; overflow: hidden; position: absolute;}
 .maskBg{ background: #000; opacity: .6;}
@@ -20,7 +20,7 @@ body{font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; color: #fff;
 #gameOver .resultBtn:nth-child(2){border:1px #0ad7d5 solid; color: #0ad7d5;}
 #gameOver .resultTxt{ height: 6.213rem; background: #fff; margin-top: -.067rem;margin-left:1px;border-bottom-left-radius: .267rem; border-bottom-right-radius: .267rem;}
 #gameOver .resultBg{ width:7.467rem; height:4.4rem; }
-#close{position: relative; top:.373rem; margin: auto; width:1.3rem;height:1.3rem; background-position:-7.32rem -2.853rem; }
+#close{position: relative; top:.373rem; margin: auto; width:1.333rem;height:1.333rem; background-position:-7.26rem -2.853rem; }
 .posCenter{ position: absolute; top:0;bottom:0;left:0;right:0; margin: auto; }
 .resultDialog{ width:7.413rem;height:14.053rem; }
 .result{ width:100%;overflow: hidden; }

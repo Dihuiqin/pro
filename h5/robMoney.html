@@ -1,0 +1,723 @@
+<!DOCTYPE html >
+<html >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>抢钱大作战-双十一预热</title>
+  <meta name="keywords" content="抢钱大作战">
+  <meta name="description" content="抢钱大作战">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/robMoney.css" rel="stylesheet" />
+</head>
+<body>
+<div class="audioArea" >
+    <audio id="fs_bgM" >
+        <source src="resource/audio/fs_bgM.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="fs_btnM">
+        <source src="resource/audio/fs_btn.wav" type="audio/wav">
+    </audio>
+    <audio id="fs_btnM2">
+        <source src="resource/audio/fs_btn.wav" type="audio/wav">
+    </audio>
+    <audio id="fs_changePageM">
+        <source src="resource/audio/fs_changePage.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ss_resdyM">
+        <source src="resource/audio/ss_resdyM.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ts_btnM">
+        <source src="resource/audio/ts_btnM.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ts_coupanAddM">
+        <source src="resource/audio/ts_coupanAddM.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div id="redRain">
+    <!--分享后背景-->
+    <div class="sharScreen">
+        <div class="fs_bg"></div>
+    </div>
+    <!--第三屏-->
+    <div class="thirdScreen">
+        <div class="ts_bg">
+            <div class="ts_bgShadow">
+                <div class="ts_bs_bg"></div>
+                <div class="ss_images ts_bs_bgB"></div>
+            </div>
+            <div class="ts_bgLine">
+                <div class="ss_images ts_bl_frame"></div>
+                <div class="ss_images ts_bl_spot"></div>
+                <div class="ss_images ts_bl_rulerT"></div>
+                <div class="ss_images ts_bl_rulerB"></div>
+            </div>
+            <div class="ts_bgArrow">
+                <div class="ss_images ts_ba_one"></div>
+                <div class="ss_images ts_ba_two"></div>
+                <div class="ss_images ts_ba_three"></div>
+            </div>
+            <div class="ss_images ts_bgDisk"></div>
+        </div>
+        <div class="ts_shark">
+            <div class="ss_images ts_sharkHead"></div>
+            <div class="ss_images ts_sharkArmL"></div>
+            <div class="ss_images ts_sharkArmR"></div>
+        </div>
+        <div class="ts_bigPrz">
+            <div class="ts_couponnBg">
+                <div class="ts_cb ts_couponnOne"></div>
+                <div class="ts_cb ts_couponnTwo"></div>
+                <div class="ts_cb ts_couponnThree"></div>
+            </div>
+            <div class="ts_integralInfo">大奖<br/>即将到来</div>
+            <div class="ss_images ts_integral"></div>
+        </div>
+        <div class="ts_user">
+            <div class="ss_images ts_userLeg"></div>
+            <div class="ss_images ts_userArm ts_userArmL"></div>
+            <div class="ss_images ts_userArm ts_userArmR"></div>
+            <div class="ss_images ts_userHead"></div>
+        </div>
+        <div class="ts_info">
+            <div class="ts_countDown">
+                <div class="ts_cd_bg"></div>
+                <div class="ts_cd_time">10s</div>
+            </div>
+            <div class="ts_mArea">
+                <div class="ts_cd_bg"></div>
+                <div class="ss_images ts_mSwitch ts_mSwitchOn"></div>
+                <div class="ss_images ts_mSwitch ts_mSwitchOff"></div>
+            </div>
+            <div class="ts_shark_score">
+                <div class="ts_get_score ts_sget_score">+1</div>
+                <div class="ts_scoreBg"></div>
+                <div class="ts_score ts_ss_score"><span id="ts_sScore">0</span><span>个</span></div>
+            </div>
+            <div class="ts_user_score">
+                <div class="ts_get_score ts_uget_score">+1</div>
+                <div class="ts_scoreBg"></div>
+                <div class="ts_score ts_us_score"><span id="ts_uScore">0</span><span>个</span></div>
+            </div>
+        </div>
+        <div class="ts_robBtn">
+            <div class="ss_images ts_rb_bg"></div>
+            <div class="ss_images ts_rb_circular"></div>
+            <div class="ss_images ts_rb_rob"></div>
+        </div>
+    </div>
+    <!--红包容器-->
+    <div id="redArea">
+        <div class ="redRain_Wrap"></div>
+    </div>
+    <!-------------------------------->
+    <!--第二屏-->
+    <div class="secondScreen">
+        <div class="ss_Bg"></div>
+        <div class="ss_images ss_circular"></div>
+        <div class="ss_images ss_ready"></div>
+        <div class="ss_images ss_go"></div>
+        <div class="ss_images ss_aperture"></div>
+    </div>
+    <!-------------------------------->
+    <!--首屏-->
+    <div class="reLoad" ></div>
+    <div class="firstScreen">
+        <div class="fs_bg"></div>
+        <div class="fs_conT">
+            <div class="fs_arrow">
+                <div class="fs_arrowArea fs_aOne">
+                    <div class="fs_images fs_arrows fs_arrBg"></div>
+                    <div class="fs_images fs_arrows fs_arrLine"></div>
+                </div>
+                <div class="fs_arrowArea fs_aTwo">
+                    <div class="fs_images fs_arrows fs_arrBg"></div>
+                    <div class="fs_images fs_arrows fs_arrLine"></div>
+                </div>
+                <div class="fs_arrowArea fs_aThree">
+                    <div class="fs_images fs_arrows fs_arrBg"></div>
+                    <div class="fs_images fs_arrows fs_arrLine"></div>
+                </div>
+            </div>
+            <div class="fs_doubleElv">
+                <div class="fs_images fs_elvStroke"></div>
+                <div class="fs_images fs_elvCon"></div>
+            </div>
+            <div class="fs_shark">
+                <div class="fs_images fs_head"></div>
+                <div class="fs_images fs_armL"></div>
+                <div class="fs_images fs_armR"></div>
+            </div>
+            <div class="fs_theme">
+                <div class="fs_images fs_themeStroke"></div>
+                <div class="fs_images fs_themeOrg"></div>
+                <div class="fs_images fs_themeYel"></div>
+            </div>
+            <div class="fs_robBtn">
+                <div class="fs_images fs_robBtnBg"></div>
+                <div class="fs_images fs_robBtnLine"></div>
+                <div class="fs_images fs_robBtnCon"></div>
+                <div class="fs_robRule">游戏规则 &gt;</div>
+            </div>
+            <div class="fs_peopleHand">
+                <div class="fs_images fs_handsOK"></div>
+                <div class="fs_images fs_preheat"></div>
+            </div>
+            <div class="fs_coupon">
+                <div class="fs_images fs_couponB"></div>
+                <div class="fs_images fs_couponT"></div>
+            </div>
+        </div>
+        <div class="fs_conB">
+            <div class="fs_btnRob fs_images"></div>
+            <div class="fs_hand fs_images"></div>
+            <div class="fs_btnClk"></div>
+        </div>
+    </div>
+    <!-------------------------------->
+    <!--结果层-->
+    <div class="lastScreen">
+        <div class="ls_bg"></div>
+        <div id="close" class="ls_images ls_close"></div>
+        <div class="ls_images ls_close ls_closeRule"></div>
+        <div class="ls_dislog ls_rule">
+            <div class="ls_imagesRule ls_ruleBg">
+                <div class="is_rCon">
+                    1.活动期间，每日每名用户均有3次参与游戏的机会，游戏中途退出则视为自愿放弃机会。<br/>
+                    2.游戏根据所抢的<span>“优惠券”数量与小鲨PK后</span>，系统将赠送PK结果相对应的奖品。<br/>
+                    3.所赠优惠券及商品有效期仅限<span>11.8-11.12</span>使用，领取后请尽快使用及购买，过期无效。<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-最终解释权归聚鲨商城所有-
+                </div>
+                <div class="ls_BtnKnow ls_closeRule">我知道了</div>
+            </div>
+            <div class="ls_images ls_ruleArm"></div>
+        </div>
+        <div class="ls_dislog ls_coupon50" >
+            <div class="ls_images ls_coupon50Bg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title">好可惜啊</div>
+                    <div class="ls_cCon_desc">就差一点点就打败小鲨, <br/>但是别气馁，送您一张领取券，<br/>下次一定能赢！</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                </div>
+                <div class="ls_BtnKnow share">分享后即可领取></div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_coupon11">
+            <div class="ls_images ls_coupon11Bg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title">厉害了哟</div>
+                    <div class="ls_cCon_desc">您成功打败小鲨,送您一张优惠券！<br/>再接再厉：</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                </div>
+                <div class="ls_BtnKnow share">分享后即可领取></div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_coupon100" >
+            <div class="ls_images ls_coupon50Bg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title">好可惜啊</div>
+                    <div class="ls_cCon_desc">就差一点点就打败小鲨, <br/>但是别气馁，送您一张领取券，<br/>下次一定能赢！</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                </div>
+                <div class="ls_BtnKnow share">分享后即可领取></div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_pillow">
+            <div class="ls_images ls_pillowBg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title">厉害了哟</div>
+                    <div class="ls_cCon_desc">离30积分仅差一步<br/>本次可免费领取</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_cCon_imgName">申鸿珍珠棉蓝色U型枕</div>
+                </div>
+                <div class="ls_BtnKnow share">分享后即可领取></div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_integral30">
+            <div class="ls_images ls_integral30Bg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title">手速超神!</div>
+                    <div class="ls_cCon_desc">成功打败小鲨!送您：</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                </div>
+                <div class="ls_BtnKnow share">分享后即可领取></div>
+            </div>
+            <div class="ls_images ls_ruleArm"></div>
+        </div>
+        <div class="ls_dislog ls_success ls_succC50">
+            <div class="ls_images ls_succCBg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title"><span class="ls_images ls_succCheck"></span><span>恭喜您!</span></div>
+                    <div class="ls_cCon_desc">您已经成功领取了:</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_images ls_cCon_info">
+                        优惠券发放至您的账户<br/>可在<span>“我的”-“礼金券”</span>中查看
+                    </div>
+                </div>
+                <div class="ls_BtnKnow ls_closeBtn">我知道了</div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_success ls_succC100">
+            <div class="ls_images ls_succCBg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title"><span class="ls_images ls_succCheck"></span><span>恭喜您!</span></div>
+                    <div class="ls_cCon_desc">您已经成功领取了:</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_images ls_cCon_info">
+                        优惠券发放至您的账户<br/>可在<span>“我的”-“礼金券”</span>中查看
+                    </div>
+                </div>
+                <div class="ls_BtnKnow ls_closeBtn">我知道了</div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_success ls_succC11">
+            <div class="ls_images ls_succCBg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title"><span class="ls_images ls_succCheck"></span><span>恭喜您!</span></div>
+                    <div class="ls_cCon_desc">您已经成功领取了:</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_images ls_cCon_info">
+                        优惠券发放至您的账户<br/>可在<span>“我的”-“礼金券”</span>中查看
+                    </div>
+                </div>
+                <div class="ls_BtnKnow ls_closeBtn">我知道了</div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_success ls_succPillow" >
+            <div class="ls_images ls_succPBg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title"><span class="ls_images ls_succCheck"></span><span>恭喜您!</span></div>
+                    <div class="ls_cCon_desc">您已经成功领取了:</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_cCon_imgName">申鸿珍珠棉蓝色U型枕</div>
+                    <div class="ls_images ls_cCon_info">单独购买需支付10元邮费<br/>凑单至99元可享受免邮服务哦</div>
+                    <div class="ls_images ls_cCon_info2">数量有限抢完为止</div>
+                </div>
+                <div class="ls_BtnKnow">
+                    <span id="goadd">去凑单</span>
+                    <span id="gocart">加入购物车</span>
+                </div>
+            </div>
+            <div class="ls_images is_cTop"></div>
+        </div>
+        <div class="ls_dislog ls_success ls_succI30">
+            <div class="ls_images ls_succI30Bg">
+                <div class="is_cCon">
+                    <div class="ls_cCon_title"><span class="ls_images ls_succCheck"></span><span>恭喜您!</span></div>
+                    <div class="ls_cCon_desc">您已经成功领取了:</div>
+                    <div class="ls_images ls_cCon_img"></div>
+                    <div class="ls_images ls_cCon_info">
+                        优惠券发放至您的账户<br/>可在<span>“我的”-“礼金券”</span>中查看
+                    </div>
+                </div>
+                <div class="ls_BtnKnow ls_closeBtn">我知道了</div>
+            </div>
+            <div class="ls_images ls_ruleArm"></div>
+        </div>
+    </div>
+    <!-------------------------------->
+</div>
+<div class="toast"></div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script>
+    $(function () {
+        var screenW =  $(window).width();
+        var redRain_Wrap = $('.redRain_Wrap');
+        var envelope = $('.envelope');
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]);
+            return null;
+        }
+        //取出参数version
+        var versionMark ='{pigcms:$versionH}';
+        /*-------------------------*/
+        var clickMark=1;
+        var clickBigP=0;
+        var rightPrize=0;
+        var switchOn=1;
+        var $coins = [];
+        /*音乐开关*/
+        $('.ts_mSwitchOn').on('touchend',function(){
+            $(this).hide();
+            switchOn=0;
+            document.getElementById("fs_bgM").pause();
+            $('.ts_mSwitchOff').show();
+        });
+        $('.ts_mSwitchOff').on('touchend',function(){
+            switchOn=1;
+            $(this).hide();
+            document.getElementById("fs_bgM").play();
+            $('.ts_mSwitchOn').show();
+        });
+        /*去购物车*/
+        $("#gocart").on('touchend',function () {
+            gocart();
+        });
+        /*去凑单*/
+        $("#goadd").on('touchend',function () {
+            gocart();
+        });
+        /*firstScreen*/
+        $('.fs_hand').animate(
+            {'left':'4.8rem','top': '1.2rem'},800,'linear',function () {
+                $(this).addClass('fs_handMove');
+                /*------------------------------*/
+                $('.fs_btnRob').addClass('btnRobZoom');
+                $('.fs_aOne').addClass('fs_arrowShadeO');
+                $('.fs_aTwo').addClass('fs_arrowShadeTw');
+                $('.fs_aThree').addClass('fs_arrowShadeTh');
+                $('.fs_shark').show();
+                $('.fs_head').addClass('fs_sharkHead');
+                $('.fs_armL').addClass('fs_sharkArmL');
+                $('.fs_armR').addClass('fs_sharkArmR');
+                $('.fs_theme').show();
+                $('.fs_themeOrg').addClass('fs_themeOrgSca');
+                $('.fs_themeStroke').addClass('fs_themeOrgSca');
+                $('.fs_themeStroke').animate(
+                    {'opacity': '1'},500,'linear',function () {
+                        $('.fs_peopleHand').show();
+                        $('.fs_preheat').addClass('fs_preheatSca');
+                        $('.fs_coupon').show().animate(
+                            {'right':'2.187rem','top': '4.133rem'},300,'linear',function () {
+                                $('.fs_couponB').addClass('fs_couponBMove');
+                                $('.fs_couponT').addClass('fs_couponTMove');
+                            });
+                        $('.fs_handsOK').show().animate(
+                            {'left':'0','top': '0','opacity':'1'},300,'linear',function () {
+                                $(this).addClass('fs_peopleHandMove');
+                                $('.fs_doubleElv').show().addClass('fs_sharkHead');
+                            });
+                    }
+                );
+                $('.fs_themeYel').addClass('fs_themeYelSca');
+                $('.fs_robBtn').addClass('fs_robBtnSca').show();
+                /*------------------------------*/
+                $('.fs_btnClk').on('click',function(){
+                    clearInterval(fs_btnM);
+                    $(".firstScreen").remove();
+                    secondStep();
+                    document.getElementById("fs_changePageM").play();
+                    document.getElementById("fs_bgM").play();
+                    document.getElementById("ss_resdyM").play();
+                });
+            });
+        /*活动规则*/
+        $('.fs_robRule').on('click',function(){
+            $(".lastScreen").show();
+            $(".ls_closeRule").show();
+            $("#close").hide();
+            $(".ls_rule").show().removeClass('my_bottom').addClass('my_top');
+        });
+        $('.ls_closeRule').on('click',function(){
+            $(".ls_rule").removeClass('my_top').addClass('my_bottom');
+            $(".ls_closeRule").hide();
+            setTimeout(function () {
+                $(".lastScreen").hide();
+                $(".ls_rule").hide();
+                $("#close").show();
+            },400);
+        });
+        /*活动规则 end -----------------*/
+        /*firstScreen --end---------------*/
+        /*secondScreen*/
+        function secondStep() {
+            $('.secondScreen').show();
+            $('.ss_Bg').addClass('ss_BgMove');
+            $('.ss_Bg').on("animationend", function () {
+                ssAnimals();
+            });
+            $('.ss_Bg').on("webkitAnimationEnd", function () {
+                ssAnimals();
+            });
+            function ssAnimals() {
+                $('.ss_circular').show().addClass('ss_circularSca');
+                $('.ss_ready').show().addClass('ss_readySca');
+                $('.ss_go').show().addClass('ss_goSca');
+                $('.ss_aperture').show().addClass('ss_apertureMove').on("animationend", function (){
+                    thirdStep();
+                    if(switchOn==1) {
+                        document.getElementById("fs_changePageM").play();
+                    }
+                    $(".secondScreen").remove();
+                });
+                $('.ss_aperture').show().addClass('ss_apertureMove').on("webkitAnimationEnd", function (){
+                    thirdStep();
+                    if(switchOn==1) {
+                        document.getElementById("fs_changePageM").play();
+                    }
+                    $(".secondScreen").remove();
+                });
+            }
+        }
+        /*---secondScreen --end----------------------*/
+        /*thirdScreen*/
+        'use strict';
+        /*绘制img*/
+        function InitEnv() {
+            /*随机生成两条路线*/
+            var yRandom =Math.random();//0-1;
+            var randomTop = 0;
+            if(yRandom >= 0.5){
+                randomTop = 0;
+            }else {
+                randomTop = '4.213';
+            }
+            var $coin = $('<div class="envelope valid">').appendTo('.redRain_Wrap');
+            $coin.css('top',randomTop+'rem');
+            var x = $(window).width()/2 + $coin.width()/2;
+            var x2 = $(window).width() + $coin.width()*2;
+            $coin.css('transform', 'translateX(' + -x + 'px)').on('transitionend', function() {
+                $coin.off('transitionend').css('transition-duration', '1.2s').css('transform', 'translateX(' + -x2 + 'px)').on('transitionend', function() {
+                    $coin.remove();
+                });
+                $coins.shift();
+            });
+            return $coin;
+        }
+        /*重复间隔生成红包*/
+        function gameInit() {
+            //红包初始化
+            var envInterval = setInterval(InitEnv, 600);
+            /*红包雨进行时间，10s后不再生成红包*/
+            setTimeout(function(){
+                clearInterval(envInterval);
+            },10000);
+        }
+        /*游戏进行时倒计时*/
+        function timing() {
+            var time = $('.ts_cd_time');
+            var i=10;
+            time.html(i+'S');
+            timing = setInterval(function(){
+                i--;
+                if(i<=0){
+                    i=0;
+                    clearInterval(timing);
+                    $('.ts_countDown').hide();
+                    $('.ts_couponnBg').remove();
+                }
+                time.html(i+'S');
+            },1000);
+        }
+        function thirdStep() {
+            $('.thirdScreen').show();
+            $('.ts_ba_one').addClass('fs_arrowShadeO');
+            $('.ts_ba_two').addClass('fs_arrowShadeTw');
+            $('.ts_ba_three').addClass('fs_arrowShadeTh');
+            $('.ts_sharkHead').addClass('ts_sh_move');
+            $('.ts_sharkArmL').addClass('ts_sa_Lmove');
+            $('.ts_sharkArmR').addClass('ts_sa_Rmove');
+            $('.ts_rb_circular').addClass('ts_rb_cRot');
+            var userScore = 1;
+            var sharkScore = 1;
+            /*鲨鱼抢红包*/
+            setTimeout(function(){
+                var sharkTer = setInterval(function(){
+                    var envelope = $('.valid');
+                    var ts_cd_time = $('.ts_cd_time').html();
+                    for(var i=0;i<envelope.length;i++){
+                        var currCouTop = $(envelope[i]).position().top;
+                        var currCouLeft = $(envelope[i]).position().left;
+                        if(currCouTop<50&&currCouLeft>=screenW*.2&&currCouLeft<=screenW*.6){
+                            var left =-($(window).width()/2+$(envelope[i]).width()/2);
+                            var top = -1.6;
+                            $(envelope[i]).removeClass('valid').css('transition-duration', '.3s').css('transform', 'translate('+ left+'px,'+top + 'rem)').off('transitionend');
+                            $('.ts_sget_score').show();
+                            setTimeout(function(){
+                                $('.ts_sget_score').hide();
+                            },300);
+                            $('#ts_sScore').html(sharkScore);
+                            sharkScore++;
+                            break;
+                        }
+                    }
+                    if(ts_cd_time=='0S'){
+                        clearInterval(sharkTer);
+                        bigPrize();
+                    }
+                },1000);
+            },1500);
+            /*用户抢红包*/
+            $('.ts_rb_rob').on('touchend',function () {
+                if(switchOn==1) {
+                    document.getElementById("fs_bgM").play();
+                }
+                if(clickMark==1){
+                    clickMark=0;
+                    if(switchOn==1) {
+                        document.getElementById("ts_btnM").play();
+                    }
+                    $('.ts_robBtn').addClass('ts_robBtnZoom');
+                    $('.ts_userArm').addClass('ts_userArmMove');
+                    /*抢红包*/
+                    var envelope = $('.valid');
+                    if(envelope.length>=0){
+                        for(var i=0;i<envelope.length;i++){
+                            var currCouTop = $(envelope[i]).position().top;
+                            var currCouLeft = $(envelope[i]).position().left;
+                            if(currCouTop>50&&currCouLeft>screenW*.28&&currCouLeft<screenW*.48){
+                                if(switchOn==1) {
+                                    document.getElementById("ts_coupanAddM").play();
+                                }
+                                var left =-($(window).width()/2+$(envelope[i]).width()/2);
+                                var top = 3.3;
+                                $('#ts_uScore').html(userScore);
+                                userScore++;
+                                $(envelope[i]).removeClass('valid').css('transition-duration', '.3s').css('transform', 'translate('+ left+'px,'+top + 'rem)').off('transitionend');
+                                $('.ts_uget_score').show();
+                                setTimeout(function(){
+                                    $('.ts_uget_score').hide();
+                                },300);
+                                break;
+                            }
+                        }
+                    }
+                    setTimeout(function(){
+                        clickMark=1;
+                        $('.ts_robBtn').removeClass('ts_robBtnZoom');
+                        $('.ts_userArm').removeClass('ts_userArmMove');
+                    },300);
+                }
+            });
+            /*大奖出现*/
+            function bigPrize() {
+                $('.ts_integralInfo').addClass('ts_ii_Move');
+                $('.ts_integralInfo').on("animationend", function (){
+                    bigprizeAnimals();
+                });
+                $('.ts_integralInfo').on("webkitAnimationEnd", function (){
+                    bigprizeAnimals();
+                });
+                function bigprizeAnimals() {
+                    $('.ts_integral').animate({'left':'-5rem'},7000,'linear');
+                    var prizeTime = setInterval(function(){
+                        var ts_integral = $('.ts_integral');
+                        var integralLeft = ts_integral.position().left;
+                        if(integralLeft>=screenW*(-.2)&&integralLeft<=screenW*.18){
+                            $('.ts_rb_rob').on('touchend',function () {
+                                clickBigP=1;
+                            });
+                            var sharkNum = $('#ts_sScore').html();
+                            var userNum = $('#ts_uScore').html();
+                            if(sharkNum>userNum){
+                                rightPrize = 0;
+                            }
+                            if(clickBigP==1&&rightPrize==1){  //用户抢到 todo
+                                ts_integral.animate().stop().addClass('couponClick').css({'left':'1rem','top':'10rem'});
+                            }else{
+                                ts_integral.animate().stop().addClass('couponClick').css({'left':'1rem','top':'1rem'});
+                            }
+                          clearInterval(prizeTime);
+                          sendResult(sharkNum,userNum,rightPrize);
+                        }
+                    },300);
+                }
+            }
+            /*礼金券出现*/
+            timing();
+            gameInit();
+        }
+        /*---thirdScreen --end----------------------*/
+    /*请求中奖结果*/
+        var snTemp = 0;
+        var prize_type = 0;
+        var coupon_sn = 0;
+    function sendResult(sharkNum,userNum,rightPrize) {
+        //发送请求
+      var param = {};
+      param.sharkNum = sharkNum;
+      param.userNum = userNum;
+      param.rightPrize = rightPrize;
+      var data = robMoney('getResult',param);
+      $(".lastScreen").show();
+      $("#close").show();
+      $(".ls_closeRule").hide();
+      myShare(data.prize_name,data.prizetype);
+      if(data.prizetype==1){
+        $(".ls_integral30").show();
+      }else if(data.prizetype==2){
+        $(".ls_coupon11").show();
+      }else if(data.prizetype==3){
+        $(".ls_pillow").show();
+      }else if(data.prizetype==4){
+        $(".ls_coupon50").show();
+      }else if(data.prizetype==5){
+        $(".ls_coupon100").show();
+      }else{
+        alert('网络不好，再试一次吧`');
+      }
+    }
+    /*发奖*/
+    function grant(num) {
+      $(".lastScreen").show();
+      $("#close").show();
+      $(".ls_closeRule").hide();
+      var data = robMoney('awardResult',num);
+      if(data.prizetype==1){
+        $(".ls_succI30").show();
+      }else if(data.prizetype==2){
+        $(".ls_succC11").show();
+      }else if(data.prizetype==3){
+        $(".ls_succPillow").show();
+      }else if(data.prizetype==4){
+        $(".ls_succC50").show();
+      }else if(data.prizetype==5){
+        $(".ls_succC100").show();
+      }else{
+        alert('网络不好，再试一次吧`');
+      }
+    }
+    /*加购物车*/
+    function gocart(){
+      $('.toast').html('成功加入购物车').show();
+      setTimeout(function () {
+        $('.toast').hide().html('');
+      },1500);
+    }
+    //关闭按钮
+      $('.ls_closeBtn').on('touchend',function(){
+        document.getElementById("fs_bgM").pause();
+        closeBtn('iswap');
+      });
+      $('#close').on('touchend',function(){
+        document.getElementById("fs_bgM").pause();
+        closeBtn('iswap');
+      });
+    //分享功能
+    function myShare(prize,prizeNum) {
+      $('.share').html('立即领取').on('touchend',function () {
+        if(prizeNum==3){
+          $(".lastScreen").show();
+          $("#close").show();
+          $(".ls_closeRule").hide();
+          $(".ls_succPillow").show();
+        }else{
+          grant(prizeNum);
+        }
+      });
+    }
+        var timer;
+        $('body').on('touchend', function() {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                document.getElementById("fs_bgM").pause();
+            }, 5000);
+        });
+    });
+</script>
+</body>
+</html>

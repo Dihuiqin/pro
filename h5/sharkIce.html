@@ -6,7 +6,7 @@
     <meta name="misapplication-tap-highlight" content="no" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="320" />
-    <title>718-鲨鱼砸冰块</title>
+    <title>17718-鲨鱼砸冰块</title>
     <meta name="keywords" content="鲨鱼砸冰块">
     <meta name="description" content="鲨鱼砸冰块">
     <script src="../public/js/flexibleMine.js"></script>
@@ -49,7 +49,7 @@
                 <p class="Txt">送您 <span class="prize">3元无门槛券</span> 谢礼</p>
                 <p class="viceTxt">请在“我的”-“礼金券”中查看</p>
                 <div class="btnGroup">
-                    <a class="resultBtn" id="gomain">主会场</a>
+                    <a class="resultBtn" id="gomain">再玩</a>
                     <div class="share resultBtn">分享</div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <p class="Txt">鲨鱼宝宝未能破冰</p>
                 <p class="viceTxt">请快速点击 <span>START</span> 再试一次哦</p>
                 <div class="btnGroup">
-                    <a class="resultBtn2 pngImgB" href="{pigcms::$wxtest}redrain.php?uid={pigcms:$Dazpan.id}"></a>
+                    <a class="resultBtn2 pngImgB" href=""></a>
                 </div>
             </div>
         </div>
@@ -208,7 +208,6 @@
                 $('#resultGoods .goodsName').html('送您'+arrInfo[random][1]);
                 $('#resultGoods .firstPrice').html('聚鲨价:'+arrInfo[random][2]);
                 $('#resultGoods .lastPrice span').html(arrInfo[random][3]);
-                // $('#resultGoods .resultBtn').attr('href','product-'+arrInfo[random][0]+'.html'); // todo
                 $('#resultGoods').show();
             }else if(num == 0){
                 $('#resultError').show();
@@ -231,39 +230,23 @@
             if (typeof app !== 'undefined' && app.share) {
                 app.share(shareOb);
             } else {
-                alert('请更新到最新版本');
+                alert('请在APP中打开');
             }
         });
     }
     /*-------------------------*/
-    var channel = getUrlParam('main_venue_enter');
-    var uid = getUrlParam('uid');
-    /*主会场进入时返回的不同作用*/    //关闭按钮
-    if(channel == 'true'){
-        $('#gomain').on('touchend',function(){
-            $('#gameOver').hide();
-            history.back();
-        });
-        $('.close').on('touchend',function(){
-            $('#gameOver').hide();
-            history.back();
-        });
-        $('#close').on('touchend',function(){
-            $('#gameOver').hide();
-            history.back();
-        })
-    }else{
-        // $('#gomain').attr('href',''); // todo
-        $('.close').on('touchend',function(){
-            $('#gameOver').hide();
-            closeBtn();
-        });
-        $('#close').on('touchend',function(){
-            $('#gameOver').hide();
-            closeBtn();
-        })
-    }
-
+    $('.close').on('touchend',function(){
+      $('#gameOver').hide();
+      closeBtn('iswap');
+    });
+    $('#close').on('touchend',function(){
+      $('#gameOver').hide();
+      closeBtn('iswap');
+    });
+    $('#gomain').on('touchend',function(){
+      $('#gameOver').hide();
+      closeBtn('iswap');
+    })
 
 </script>
 </body>

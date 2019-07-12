@@ -1,4 +1,4 @@
-html,body{ width: 10rem; height: 100vh; overflow: hidden}
+/*html,body{ width: 10rem; height: 100vh; overflow: hidden} 加上会导致刷新样式错乱*/
 body{font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; color: #fff;}
 #coin,#coinMask,#coinData,#coinGuide,#gameOver,#coinBg,.maskBg{ width: 10rem; height: 100vh; overflow: hidden; position: absolute;}
 .maskBg{ background: #000; opacity: .6;}
@@ -16,9 +16,9 @@ body{font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; color: #fff;
 #coinGuide{display: none;}
 #coinGuide,#gameOver{z-index: 4;}
 .guideBg{ position: absolute; margin: auto; left: 0; right: 0; bottom: 3rem; width: 6.6rem; height: 8.32rem;background-position:0 -8.773rem }
-#firstClose,#audioSwitch{ position: absolute; right:.8rem; width: .95rem; height: .95rem;  }
-#firstClose{ top:3.147rem; background-position: 0 -2.667rem;}
-#audioSwitch{ z-index: 4; display: none; top:5.3rem; background-position: -1.133rem -2.667rem;}
+#firstClose,#audioSwitch{ position: absolute; right:.8rem; width: .987rem; height: .987rem;  }
+#firstClose{ top:3.147rem; background-position: 0 -2.64rem;}
+#audioSwitch{ z-index: 4; display: none; top:5.3rem; background-position: -1.133rem -2.64rem;}
 #firstClose p,#audioSwitch p{position: absolute; top:1rem; width: .933rem; font-size: .42rem; line-height: .8rem; text-align: center;}
 .guideTxt{ margin: auto; width: 6rem; padding: .52rem 0; font-size: .507rem; line-height: .8rem; text-align: center;}
 #hand{ position: absolute; bottom:-.3rem; right: 1.95rem; width:1.17rem;height: 1.107rem; background-position:-7.6rem -3.773rem; }

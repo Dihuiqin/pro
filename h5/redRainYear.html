@@ -1,0 +1,375 @@
+<!DOCTYPE html >
+<html >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>红包雨-17year</title>
+  <meta name="keywords" content="红包雨">
+  <meta name="description" content="红包雨">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/rainYear.css" rel="stylesheet" />
+</head>
+<body style="font-family: PingFangSC-Regular, Helvetica, Arial, sans-serif; overflow-y: hidden; ">
+<div id="redRain">
+	<div id ="redRain_bg"></div>
+	<div class="snow">
+		<div class="snowbg snow1"></div>
+		<div class="snowbg snow2"></div>
+		<div class="snowbg snow3"></div>
+		<div class="snowbg snow4"></div>
+		<div class="snowbg snow5"></div>
+	</div>
+	<div class ="redRain_Wrap"><div class="envelope"></div></div>
+	<!--进行时倒计时-->
+	<div class="timingBtn close"></div>
+	<div class="timeBtn" style="display: none">
+		<div class="timeBC"></div>
+		<div class="timeSC"></div>
+		<div class="timing">10S</div>
+	</div>
+	<!--开始前倒计时-->
+	<div class="timeArea">
+		<div class="timeBg timeTxt" ></div>
+		<div class="time">
+			<div class ="timeBg timer3"></div>
+			<div class ="timeBg timer2" style="display: none"></div>
+			<div class ="timeBg timer1" style="display: none"></div>
+		</div>
+	</div>
+	<!--游戏结束-->
+	<div class="gameOver">
+		<div class="dislogMask"></div>
+		<div class="win" style="display: none">
+			<div class="win_bann"></div>
+			<div class="dialog_con">
+				<p class="winP font40" >恭喜您获得</p>
+				<span class="giftCard font36">礼金券</span>
+				<hr/>
+				<span class="preDeposit font36">预存款</span>
+				<span class="instr font28" >奖品请在首页“我的”中查看</span>
+			</div>
+			<a class="dialog_btn" href="">我知道啦</a>
+		</div>
+		<div class="notWin" style="display: none">
+			<div class="notWin_bann"></div>
+			<div class="dialog_con">
+				<p class="font40">很遗憾，您没有中奖</p>
+				<span class="font36">多逛逛商场</span>
+				<span class="font36">也许就有好运气啦~</span>
+			</div>
+			<a class="dialog_btn" href="{pigcms::$ecstore_url}wap/act-1701.html">更多省钱方式</a>
+		</div>
+	</div>
+</div>
+<div class="yck" style="display: none">0</div>
+<div class="lj" style="display: none">0</div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script>
+    var yck = 0;
+    var lj = 0;
+    var dialogH = $(".win").height();
+    var envelope = $('.envelope');
+    var redRain = $("#redRain");
+    var redRain_Wrap = $('.redRain_Wrap');
+    var timeBtn = $('.timeBtn');
+    var numDown = $('.timing');
+    var gameOver = $('.gameOver');
+    var timingBtn = $('.timingBtn');
+    var containerHeight = $(window).height();
+    var containerWidth = $(window).width();
+	/*倒计时*/
+    var timer1 = $('.timer1');
+    var timer2 = $('.timer2');
+    var timer3 = $('.timer3');
+	/*测试数据*/
+    var usenums = 0;
+    $(function () {
+        redRain.css('height',$(window).height());
+        $('#redRain_bg').css('height',$(window).height());
+        gameOver.hide();
+        setTimeout(function(){
+            timer3.hide();
+            timer2.show();
+        },1000);
+        setTimeout(function(){
+            timer2.hide();
+            timer1.show();
+        },2000);
+        setTimeout(function(){
+            timer1.hide();
+        },3000);
+        $('.dialog_btn').click(function () {
+            $('.gameOver').hide();
+        })
+    });
+    'use strict';
+	/*红包降落*/
+    (function ($) {
+        //红包初始化
+        var redEnvelope_defaults = {
+        };
+        var $envelopeObj = null;
+        var Init;
+        Init = (function () {
+            function Init(element, options) {   //element为.redRain_Wrap
+                this.$settings = $.extend({}, $.fn.redEnvelope.defaults, options);
+                this.$element = $(element);
+                this.init();
+            }
+            //游戏初始化
+            Init.prototype.init = function () {
+                if (this.$settings != undefined || this.$settings != null) {
+                    for (var option in this.$settings) {
+                        redEnvelope_defaults[option] = this.$settings[option];
+                    }
+                }
+                $envelopeObj = this.$element;
+                gameInit();
+            };
+            return Init;
+        })();
+        $.fn.redEnvelope = function (options, $arg) {
+            var retrunValue = null;
+            this.each(function () {
+                var $me = $(this),
+                    instance = $me.data('redEnvelope');
+                if (!instance) {
+                    $me.data('redEnvelope', new Init(this, options));
+                }
+                if ($.type(options) === 'string') {
+                    retrunValue = instance[options]($arg);
+                }
+                if (retrunValue === null) {
+                    return this;
+                } else {
+                    return retrunValue;
+                }
+            });
+        };
+        //游戏初始化属性
+        $.fn.redEnvelope.defaults = {
+            clickFun: function () {
+              $(this).off("touchend",redEnvelope_defaults.clickFun);
+              var redT = ($(this).offset().top)-40;
+              var redL = $(this).offset().left;
+              var resultImg;
+              $(this).animate().stop().addClass("clicked");
+              var data = rainYear('getResult');
+              switch(data.prizetype){
+                case 1 :{
+                  resultImg = "10.png";   //预存款10元
+                  yck += 10;
+                  if(yck>10){
+                    yck -= 10;
+                    resultImg = "empty.png";
+                  }
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 2 : {
+                  yck += 5;
+                  resultImg = "5.png";   //预存款5元
+                  if(yck>10){
+                    yck -= 5;
+                    resultImg = "empty.png";
+                  }
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 3 : {
+                  yck += 3;
+                  resultImg = "http://pic.sharkshopping.com/public/images/c3/2e/52/f16a5de90fdd72319f3c9fd2d47d8b65840b3f70.png";
+                  if(yck>10){
+                    yck -= 3;
+                    resultImg = "empty.png";
+                  }
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 4 :{
+                  lj += 10;
+                  resultImg = "oupon10.png";   //礼金10元
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 5 : {
+                  lj += 7;
+                  resultImg = "oupon7.png";    //礼金7元
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 6 : {
+                  lj += 5;
+                  resultImg = "oupon5.png";   //礼金5元
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 7 : {
+                  lj += 3;
+                  resultImg = "oupon3.png";  //礼金3元
+                  result(resultImg,redT,redL,lj,yck);
+                }break;
+                case 0 : {
+                  resultImg = "empty.png";  //无中奖
+                  result(resultImg,redT,redL,lj,yck);
+                } break;
+              }
+            }
+        };
+        var envInterval = null;
+		/*游戏初始化，一个定时器envInterval，已清除*/
+        function gameInit() {
+            //红包初始化
+            envInterval = setInterval(InitEnv, 380);
+			/*红包雨进行时间*/
+            setTimeout(function(){
+                clearInterval(envInterval);
+            },10000);
+        }
+		/*红包属性*/
+        function InitEnv() {
+            var imgEnv = document.createElement('div');
+            var redClas = 'envelopeBg envelope_big';
+            var redSize = parseInt(Math.random()*4);
+            if(redSize == 0 ){
+                redClas = 'envelopeBg envelope_bigger';
+            }if(redSize == 1 ){
+                redClas = 'envelopeBg envelope_small';
+            }if(redSize == 4 ){
+                redClas = 'envelopeBg envelope_smaller';
+            }
+            var redHeight = 270;
+            if(containerWidth>1200){
+                redHeight = 450;
+            }
+            imgEnv.setAttribute('class', redClas);
+            var startTop = parseInt(Math.random() * 10 - redHeight);  //
+            var startLeft = parseInt(Math.random() * containerWidth/3+containerWidth/3);	//
+            if(containerWidth<500){
+                startLeft = parseInt(Math.random() * containerWidth/3+containerWidth/5*2.2);	//
+            }
+            imgEnv.style.top = startTop+ 'px';
+            imgEnv.style.left = startLeft+ 'px';
+			/*监听红包被点击事件*/
+            $(imgEnv).one("touchend",redEnvelope_defaults.clickFun);
+            evnPosition(imgEnv, startTop,startLeft,redHeight);
+        }
+		/*红包位置移动*/
+        function evnPosition(img,st,sl,redh) {
+            $envelopeObj.prepend(img);
+            //移动的位置
+            var time = Math.random()*2+9;
+            evnAnimation({
+                'x': sl,
+                'y': st,
+                'dt': Math.random()*2+3.5,
+                'a_dt': Math.random()+2.1,
+                'redh':redh
+            }, time);
+        }
+		/*添加元素到主内容上 定时器timer 已清除*/
+        function evnAnimation(img_pos, time) {
+            var x = img_pos.x;
+            var y = img_pos.y;
+            var h = img_pos.redh;
+            var temp = img_pos.dt;
+            if(containerWidth<500){
+                temp = img_pos.a_dt;
+            }
+            if(containerWidth>1200){
+                temp = img_pos.dt+1;
+            }
+            var imgEnv = $envelopeObj.children('div:first');
+            var timer = setInterval(function(){
+				/*向左还是向右*/
+                x-=temp;
+                //根据屏幕height的值，设定移动的距离
+                var tempY = parseInt(containerHeight);
+                if(tempY>2000){
+                    y+=Math.random()*4+10;
+                }
+                if(tempY>1000&&tempY<=2000){
+                    y+=Math.random()*4+8;
+                }
+                if(tempY<=1000){
+                    y+=Math.random()*3+5;
+                }
+                if(y>=tempY+h){
+                    clearInterval(timer);
+                    $(imgEnv).remove();
+                }
+                var mymove = 'translate3d('+x+'px,'+y+'px,'+'0)';
+                $(imgEnv).css('transform',mymove);
+                $(imgEnv).css('-moz-transform',mymove);
+                $(imgEnv).css('-ms-transform',mymove);
+                $(imgEnv).css('-o-transform',mymove);
+                $(imgEnv).css('-webkit-transform',mymove);
+            },time);
+        }
+    })($);
+	/*中奖显示*/
+    function result(resultImg,redT,redL,lj,yck) {
+        $('.yck').html(yck);
+        $('.lj').html(lj);
+        var div = "<img class='clickResult' style=' color:#fff;position:absolute;top:"+redT+"px;left:"+redL+"px;' src='"+resultImg+"' />";//定义DIV的样式
+        $('.redRain_Wrap').append(div);
+        setTimeout(function(){
+            var remv = $('.redRain_Wrap').find('img')[0];
+            remv.remove();
+        },1000);
+    }
+	/*游戏进行时倒计时 定时器timing，已清除*/
+    function timing() {
+        var i=10;
+        numDown.html(i+'S');
+        timing = setInterval(function(){
+            i--;
+            numDown.html(i+'S');
+            if(i==0){
+                clearInterval(timing);
+            }
+        },1000);
+    }
+	/*3s后下红包雨并计时*/
+    setTimeout(function(){
+        timeBtn.show();
+        timingBtn.hide();
+        timing();
+    },3000);
+    setTimeout(function(){
+        $('.redRain_Wrap').redEnvelope();
+    },2500);
+    setTimeout(function(){
+        var yck = $('.yck').html();
+        var lj = $('.lj').html();
+        $('.redRain_Wrap img').unbind("click");
+        win(yck,lj);
+    },15500);
+	/*中奖结果*/
+    function win(yck,lj) {
+        timeBtn.hide();
+        $('.gameOver').show();
+        $('.gameOver').css('z-index','4');
+        $('.giftCard span').html('0');
+        $('.preDeposit span').html('0');
+        var a = ($(window).height())/2-dialogH/2;
+        if(yck == 0 && lj == 0){
+            $('.win').hide();
+            $('.notWin').show().addClass('clickResultDown').css('top',a);
+        }else if(yck != 0 || lj != 0){
+            $('.notWin').hide();
+            $('.win').show().addClass('clickResultDown').css('top',a);
+            if(lj !== 0){
+                $('.giftCard').html(lj+'元礼金券');
+            }
+            if(yck !== 0){
+                $('.preDeposit').html(yck+'元预存款');
+            }
+        }
+    }
+    //点击弹窗外操作-关闭
+    $('.close').on('click',function(){
+      closeBtn('iswap');
+    });
+</script>
+</body>
+</html>

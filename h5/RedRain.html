@@ -1,0 +1,662 @@
+<!DOCTYPE html >
+<html >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>红包雨-17双十一</title>
+  <meta name="keywords" content="红包雨">
+  <meta name="description" content="红包雨">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/redRain.css" rel="stylesheet" />
+</head>
+<body>
+<div class="shadeshadeshade">
+	<div class="shadeMask"></div>
+</div>
+<div class="audioArea" >
+	<audio id="redrain_bg" >
+		<source src="resource/audio/redrain_bg.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="ss_resdyM" >
+		<source src="resource/audio/ss_resdyM.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="fs_btnM">
+		<source src="resource/audio/fs_btn.wav" type="audio/wav">
+	</audio>
+</div>
+<div id="redRain">
+	<!--第三屏-->
+	<div class="thirdScreen">
+		<div class="ts_bg"></div>
+		<div class="ts_bgStar">
+			<div class="red_images ts_bgStarOne"></div>
+			<div class="red_images ts_bgStarTwo"></div>
+			<div class="red_images ts_bgStarThree"></div>
+			<div class="red_images ts_bgStarFour"></div>
+		</div>
+		<div class="ts_info ts_cd_info">
+			<div class="ts_subTitle">倒计时</div>
+			<div class="ts_countNum">
+				<div class="ts_cd_bg"></div>
+				<div class="ts_cd_time">10s</div>
+			</div>
+		</div>
+		<div class="ts_info ts_rob_info">
+			<div class="ts_subTitle">已抢<span class="red_images"></span></div>
+			<div class="ts_countNum">
+				<div class="ts_rob_bg"></div>
+				<div class="ts_rob_cn">0个</div>
+			</div>
+		</div>
+		<div class="red_images ts_surpComing"></div>
+	</div>
+	<!--红包容器-->
+	<div id="redArea">
+		<div class ="redRain_Wrap"></div>
+	</div>
+	<!-------------------------------->
+	<!--第二屏-->
+	<div class="secondScreen">
+		<div class="ss_Bg"></div>
+		<div class="red_images ss_ready"></div>
+		<div class="red_images ss_go"></div>
+	</div>
+	<div class="red_images ss_videoSwitch ss_vsOn"></div>
+	<div class="red_images ss_videoSwitch ss_vsOff"></div>
+	<!-------------------------------->
+	<!--首屏-->
+	<div class="reLoad" ></div>
+	<div class="firstScreen">
+		<div class="red_images fs_bgT fs_bgTMove"></div>
+		<div class="red_images fs_bgB fs_bgBMove"></div>
+		<div class="red_images fs_redEnve fs_redEnve1"></div>
+		<div class="red_images fs_redEnve fs_redEnve2"></div>
+		<div class="red_images fs_redEnve fs_redEnve3"></div>
+		<div class="red_images fs_redEnve fs_redEnve4"></div>
+		<div class="fs_robRule ls_ruleEntrance">游戏规则</div>
+		<div class="fs_conB">
+			<div class="fs_btnRobCir fs_btnChange"></div>
+			<div class="fs_btnRob red_images btnRobZoom">马上<br/>开抢</div>
+			<div class="fs_hand red_images fs_handMove"></div>
+			<div class="fs_btnClk"></div>
+		</div>
+	</div>
+	<!-------------------------------->
+	<!--结果层-->
+	<div class="lastScreen">
+		<div class="ls_bg"></div>
+		<div id="close" class="ls_images ls_close"></div>
+		<div class="ls_dislog ls_error">
+			<div class="ls_errorBg">
+				<div class="is_eCon">
+					很遗憾没中奖<br/>
+					多玩几次<br/>
+					也许就有好运气了<br/>
+				</div>
+				<div class="ls_BtnKnow ls_closeBtn">再来一次</div>
+			</div>
+		</div>
+		<div id="ls_coupon50" class="ls_dislog ls_coupon ls_coupon50" >
+			<div class="ls_images ls_dialogBottom">
+				<div data-on="1" class="ls_BtnKnow share">立即领取></div>
+				<div class="ls_robRule ruleEntrance">查看详细活动规则</div>
+			</div>
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc">没抢够 宝宝不开心</div>
+				<div class="ls_cCon_title">小鲨送您:</div>
+				<div class="ls_images ls_cCon_img"></div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="ls_coupon100" class="ls_dislog ls_coupon ls_coupon100" >
+			<div class="ls_images ls_dialogBottom">
+				<div data-on="1" class="ls_BtnKnow share">立即领取></div>
+				<div class="ls_robRule ruleEntrance">查看详细活动规则</div>
+			</div>
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc">没抢够 宝宝不开心</div>
+				<div class="ls_cCon_title">小鲨送您:</div>
+				<div class="ls_images ls_cCon_img"></div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="ls_freeSingle" class="ls_dislog ls_freeSingle" >
+			<div class="ls_images ls_dialogBottom">
+				<div data-on="1" class="ls_BtnKnow share">立即领取></div>
+				<div class="ls_robRule ruleEntrance">查看详细活动规则</div>
+			</div>
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc">手速超神 抢了<span class="scoreNum">0</span>个红包</div>
+				<div class="ls_cCon_title">小鲨送您:</div>
+				<div class="ls_images ls_cCon_img"></div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="ls_pre3" class="ls_dislog ls_package ls_pre3">
+			<div class="ls_images ls_dialogBottom">
+				<div data-on="1" class="ls_BtnKnow share">立即领取></div>
+				<div class="ls_robRule ruleEntrance">查看详细活动规则</div>
+			</div>
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc">好神奇啊 抢了<span class="scoreNum">0</span>个红包</div>
+				<div class="ls_cCon_title">小鲨送您:</div>
+				<div class="ls_package_con">
+					<div class="ls_images ls_package_preDeposit">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">10</span>
+						<span class="ls_package_desc">礼金券</span>
+						<span class="ls_package_txt">无门槛</span>
+					</div>
+					<div class="ls_images ls_package_zero">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">0</span>
+						<span class="ls_package_txt">简约抽纸</span>
+					</div>
+					<div class="ls_images ls_package_integral">
+						<span class="ls_package_jifen">积分</span>
+						<span class="ls_package_num">3</span>
+						<span class="ls_package_txt">可抵现金使用</span>
+						<span class="ls_package_desc">积分</span>
+
+					</div>
+					<div class="ls_images ls_package_coupon">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">50</span>
+						<span class="ls_package_txt">满399元使用</span>
+					</div>
+				</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="ls_pre5" class="ls_dislog ls_package ls_pre5">
+			<div class="ls_images ls_dialogBottom">
+				<div data-on="1" class="ls_BtnKnow share">立即领取></div>
+				<div class="ls_robRule ruleEntrance">查看详细活动规则</div>
+			</div>
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc">好厉害啊 抢了<span class="scoreNum">0</span>个红包</div>
+				<div class="ls_cCon_title">小鲨送您:</div>
+				<div class="ls_package_con">
+					<div class="ls_images ls_package_preDeposit">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">200</span>
+						<span class="ls_package_desc">商品券</span>
+						<span class="ls_package_txt">满500减200</span>
+					</div>
+					<div class="ls_images ls_package_zero">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">0</span>
+						<span class="ls_package_txt">洁丽雅毛巾</span>
+					</div>
+					<div class="ls_images ls_package_integral">
+						<span class="ls_package_jifen">积分</span>
+						<span class="ls_package_num">5</span>
+						<span class="ls_package_desc">无门槛</span>
+						<span class="ls_package_txt">可抵现金使用</span>
+					</div>
+					<div class="ls_images ls_package_coupon">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">100</span>
+						<span class="ls_package_txt">满699使用</span>
+					</div>
+				</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="succ_coupon50" class="ls_dislog ls_succ ls_coupon50" >
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_title">恭喜您</div>
+				<div class="ls_cCon_desc"><span class="ls_images dialogCheck"></span>您已成功领取</div>
+				<div class="ls_images ls_cCon_img"></div>
+				<div class="ls_cCon_txt">优惠券已发放至您的账户</div>
+				<div class="ls_cCon_txt2">可在<b>“我的”-“礼金券”</b>中查看</div>
+				<div class="ls_diaKnow ls_closeBtn">再来一次</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="succ_coupon100" class="ls_dislog ls_succ ls_coupon100" >
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_title">恭喜您</div>
+				<div class="ls_cCon_desc"><span class="ls_images dialogCheck"></span>您已成功领取</div>
+				<div class="ls_images ls_cCon_img"></div>
+				<div class="ls_cCon_txt">优惠券已发放至您的账户</div>
+				<div class="ls_cCon_txt2">可在<b>“我的”-“礼金券”</b>中查看</div>
+				<div class="ls_diaKnow ls_closeBtn">再来一次</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="succ_freeSingle" class="ls_dislog ls_succ ls_freeSingle" >
+			<div class="ls_dialogMiddle ls_freeSingle_con">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_title">恭喜您</div>
+				<div class="ls_cCon_desc"><span class="ls_images dialogCheck"></span>您已成功领取</div>
+				<div class="ls_images ls_cCon_img"></div>
+				<div class="ls_cCon_txt">优惠券已发放至您的账户</div>
+				<div class="ls_cCon_txt2">可在<b>“我的”-“礼金券”</b>中查看</div>
+				<div class="ls_diaKnow ls_closeBtn">再来一次</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="succ_pre3" class="ls_dislog ls_succ ls_succPre ls_pre3" >
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc"><span class="ls_images dialogCheck"></span>恭喜您已成功领取</div>
+				<div class="ls_package_con">
+					<div class="ls_images ls_package_preDeposit">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">10</span>
+						<span class="ls_package_desc">礼金券</span>
+						<span class="ls_package_txt">无门槛</span>
+					</div>
+					<div class="ls_images ls_package_zero">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">0</span>
+						<span class="ls_package_txt">简约抽纸</span>
+					</div>
+					<div class="ls_images ls_package_integral">
+						<span class="ls_package_jifen">积分</span>
+						<span class="ls_package_num">3</span>
+						<span class="ls_package_txt">可抵现金使用</span>
+						<span class="ls_package_desc">积分</span>
+
+					</div>
+					<div class="ls_images ls_package_coupon">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">50</span>
+						<span class="ls_package_txt">满399元使用</span>
+					</div>
+				</div>
+				<div class="ls_cCon_txt">大礼包已发放至您的账户</div>
+				<div class="ls_cCon_txt2">可在<b>“我的”-“钱包”</b>中查看</div>
+				<div class="ls_diaKnow ls_closeBtn">再来一次</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div id="succ_pre5" class="ls_dislog ls_succ ls_succPre ls_pre5" >
+			<div class="ls_dialogMiddle">
+				<div class="ls_images ls_dBg"></div>
+				<div class="ls_cCon_desc"><span class="ls_images dialogCheck"></span>恭喜您已成功领取</div>
+				<div class="ls_package_con">
+					<div class="ls_images ls_package_preDeposit">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">200</span>
+						<span class="ls_package_desc">商品券</span>
+						<span class="ls_package_txt">满500减200</span>
+					</div>
+					<div class="ls_images ls_package_zero">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">0</span>
+						<span class="ls_package_txt">洁丽雅毛巾</span>
+					</div>
+					<div class="ls_images ls_package_integral">
+						<span class="ls_package_jifen">积分</span>
+						<span class="ls_package_num">5</span>
+						<span class="ls_package_desc">无门槛</span>
+						<span class="ls_package_txt">可抵现金使用</span>
+					</div>
+					<div class="ls_images ls_package_coupon">
+						<span class="ls_package_symbol">¥</span>
+						<span class="ls_package_num">100</span>
+						<span class="ls_package_txt">满699使用</span>
+					</div>
+				</div>
+				<div class="ls_cCon_txt">大礼包已发放至您的账户</div>
+				<div class="ls_cCon_txt2">可在<b>“我的”-“钱包”</b>中查看</div>
+				<div class="ls_diaKnow ls_closeBtn">再来一次</div>
+			</div>
+			<div class="ls_images ls_dialogTop"></div>
+		</div>
+		<div class="ls_dislog ls_rule">
+			<div class="ls_ruleBg">
+				<div class="is_rCon">
+					1.<span>11月10日-11月12日</span>在APP主会场，即可参与抢红包活动；<br/>
+					2.<span>8点、10点、12点、14点、16点、18点、20点、22点</span>每个时段均有一次参与机会；<br/>
+					3.红包有效期仅限11.10-11.12使用，领取后请尽快使用，过期无效。<br/>
+				</div>
+				<div class="ls_BtnKnow ls_closeRule">我知道了</div>
+				<div class="ls_ruleTitle">&nbsp;活动规则</div>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------->
+</div>
+<div class="toast"></div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script>
+  $(function () {
+    var redRain_Wrap = $('.redRain_Wrap');
+    var envelope = $('.envelope');
+    /*-------------------------*/
+    var switchOn=1;
+    var $coins = [];
+    /*音乐开关*/
+    $('.ss_vsOn').on('touchend',function(){
+        $(this).hide();
+        switchOn=0;
+        $('.ss_vsOff').show();
+        document.getElementById("redrain_bg").pause();
+        document.getElementById("ss_resdyM").pause();
+    });
+    $('.ss_vsOff').on('touchend',function(){
+        switchOn=1;
+        $(this).hide();
+        $('.ss_vsOn').show();
+        document.getElementById("redrain_bg").play();
+    });
+		/*firstScreen*/
+    firstStep();
+    function firstStep() {
+        $('.firstScreen').show();
+        $('.fs_btnClk').on('click',function(){
+            $(".firstScreen").remove();
+            document.getElementById("fs_btnM").play();
+            document.getElementById("ss_resdyM").play();
+            document.getElementById("redrain_bg").play();
+            secondStep();
+        });
+  /*活动规则*/
+        $('.ls_ruleEntrance').on('click',function(){
+            ruleDis(1);
+        });
+        $('.ruleEntrance').on('click',function(){
+            ruleDis(2);
+        });
+
+        function ruleDis(flag) {
+            if(flag==1){
+                $(".lastScreen").show();
+                $('.ls_closeRule').on('click',function(){
+                    $(".lastScreen").hide();
+                });
+            }else{
+                $('.ls_closeRule').on('click',function(){
+                    $(".lastScreen").show();
+                });
+            }
+            $(".ls_rule").show();
+            $('.ls_closeRule').on('click',function(){
+                $(".ls_rule").hide();
+            });
+        };
+  /*活动规则 end -----------------*/
+    }
+		/*firstScreen --end---------------*/
+		/*secondScreen*/
+    function secondStep() {
+        $('.secondScreen').show();
+        $('.ss_ready').addClass('ss_readySca');
+        $('.ss_ready').on("animationend", function (){
+            $('.ss_go').addClass('ss_goSca').on("animationend", function (){
+                $('.secondScreen').remove();
+                thirdStep();
+            });
+        });
+        $('.ss_ready').on("webkitAnimationEnd", function (){
+            $('.ss_go').addClass('ss_goSca').on("webkitAnimationEnd", function (){
+                $('.secondScreen').remove();
+                thirdStep();
+            });
+        });
+    }
+		/*---secondScreen --end----------------------*/
+		/*thirdScreen*/
+    'use strict';
+    function thirdStep() {
+        $('.thirdScreen').show();
+  /*红包出现*/
+        timing();
+        gameInit();
+        var userScore = 1;
+  /*绘制img*/
+        function InitEnv() {
+    /*随机生成两条路线*/
+            var xRandom =parseInt(Math.random()*86);//0-1;
+            var $coin = $('<div class="envelope red_images">').appendTo('.redRain_Wrap');
+            $coin.css('left',xRandom+'%');
+            var y = $(window).height() + $coin.width();
+            $coin.css('transform', 'translateY(' + y + 'px)').on('transitionend', function() {
+                $coin.remove();
+                $coins.shift();
+            });
+    /*监听红包被点击事件*/
+            $coin.one("touchend",clickFun);
+            return $coin;
+        }
+  /*红包被点击事件*/
+        function clickFun() {
+            if(switchOn==1) {
+                document.getElementById("fs_btnM").play();
+                document.getElementById("redrain_bg").play();
+            }
+            var scoreTemp = userScore++;
+            $('.ts_rob_cn').html(scoreTemp+'个');
+            $(this).off("touchend", clickFun);
+            var redT = ($(this).offset().top) - 100;
+            var redL = $(this).offset().left;
+            $(this).remove();
+            var div = "<div class='clickResult' style='position:absolute;top:"+redT+"px;left:"+redL+"px;'>+1红包</div>";//定义DIV的样式
+            redRain_Wrap.append(div);
+            $('.clickResult').on("animationend", function (){
+                $(this).remove();
+            });
+            $('.clickResult').on("webkitAnimationEnd", function (){
+                $(this).remove();
+            });
+        }
+  /*重复间隔生成红包*/
+        function gameInit() {
+            //红包初始化
+            var envInterval = setInterval(InitEnv, 350);
+    /*红包雨进行时间，10s后不再生成红包*/
+            setTimeout(function(){
+                clearInterval(envInterval);
+            },9000);
+        }
+  /*游戏进行时倒计时*/
+        function timing() {
+            var time = $('.ts_cd_time');
+            var i=10;
+            time.html(i+'S');
+            timing = setInterval(function(){
+                i--;
+                if(i<=0){
+                    i=0;
+                    clearInterval(timing);
+                    $('.ts_cd_info').hide();
+                    fourthStep(userScore);
+                }
+                time.html(i+'S');
+            },1000);
+        }
+
+    }
+		/*---thirdScreen --end----------------------*/
+		/*---fourthStep */
+    function fourthStep(firstScore) {
+        var secScore=1;
+        var totalScore=firstScore;
+        $('.ts_surpComing').addClass('ts_scMove');
+        $('.ts_surpComing').on("animationend", function (){
+    /*惊喜出现*/
+            surpriseInit();
+        });
+        $('.ts_surpComing').on("webkitAnimationEnd", function (){
+    /*惊喜出现*/
+            surpriseInit();
+        });
+  /*绘制img*/
+        function InitEnv2() {
+    /*随机生成两条路线*/
+            var xRandom2 =Math.random()*80;//0-1;
+            var $coin2 = $('<div class="envelope2 bigRed_images">');
+            if(parseInt(xRandom2) % 2 ==0){
+                $coin2 = $('<div class="envelope3 bigRed_images">');
+            }
+            $coin2.html('<div class="envelopeMouth bigRed_images"></div>');
+            $coin2.css('left',xRandom2+'%');
+            $coin2.appendTo('.redRain_Wrap');
+            var y = $(window).height() + $coin2.width();
+            $coin2.on("animationend", function (){
+                $coin2.remove();
+            });
+            $coin2.on("webkitAnimationEnd", function (){
+                $coin2.remove();
+            });
+    /*监听红包被点击事件*/
+            $coin2.one("touchend",surpclickFun);
+            return $coin2;
+        }
+  /*红包被点击事件*/
+        function surpclickFun() {
+            if(switchOn==1) {
+                document.getElementById("fs_btnM").play();
+                document.getElementById("redrain_bg").play();
+            }
+            secScore++;
+            var scoreTemp = totalScore++;
+            $('.ts_rob_cn').html(scoreTemp+'个');
+            $('.scoreNum').html(scoreTemp);
+            $(this).off("touchend", surpclickFun).css({'animation-play-state':'paused','-webkit-animation-play-state':'paused'});
+            var redT = ($(this).offset().top) - 100;
+            var redL = $(this).offset().left;
+            $(this).find('.envelopeMouth').addClass('emScale');
+            $(this).find('.envelopeMouth').on("animationend", function (){
+                $(this).remove();
+                var div = "<div class='clickResult' style='position:absolute;top:"+redT+"px;left:"+redL+"px;'>+1红包</div>";//定义DIV的样式
+                redRain_Wrap.append(div);
+                $('.clickResult').on("animationend", function (){
+                    $(this).remove();
+                });
+            });
+            $(this).find('.envelopeMouth').on("webkitAnimationEnd", function (){
+                $(this).remove();
+                var div = "<div class='clickResult' style='position:absolute;top:"+redT+"px;left:"+redL+"px;'>+1红包</div>";//定义DIV的样式
+                redRain_Wrap.append(div);
+                $('.clickResult').on("webkitAnimationEnd", function (){
+                    $(this).remove();
+                });
+            });
+        }
+  /*重复间隔生成红包*/
+        function surpriseInit() {
+            //红包初始化
+            var envInterval = setInterval(InitEnv2, 350);
+    /*红包雨进行时间，10s后不再生成红包*/
+            setTimeout(function(){
+                clearInterval(envInterval);
+                setTimeout(function(){
+                    sendResult(firstScore-1,secScore-1);
+                },1000);
+
+            },5000);
+        }
+    }
+		/*---fourthStep --end----------------------*/
+		/*请求中奖结果*/
+    function sendResult(firstScore,secScore) {
+        //发送请求
+      var param = {};
+      param.firstScore = firstScore;
+      param.secScore = secScore;
+      var data = redRain('getResult',param);
+      $('.share').on('touchend',function () {
+        var sw = $('.share').attr('data-on');
+        if(sw == '1'){
+          $('.share').attr('data-on','0');
+          grant(data.prizetype);
+        }
+      });
+      $(".lastScreen").show();
+      switch(data.prizetype){
+        case 1 : {   //一等奖
+          $("#ls_freeSingle").show().addClass('my_top');
+        }break;
+        case 2 : {   //二等奖
+          $("#ls_pre5").show().addClass('my_top');
+        }break;
+        case 3 :{   //三等奖
+          $("#ls_pre3").show().addClass('my_top');
+        }break;
+        case 4 : {   //四等奖
+          $("#ls_coupon100").show().addClass('my_top');
+        }break;
+        case 5 : {   //五等奖
+          $("#ls_coupon50").show().addClass('my_top');
+        }break;
+        case 0 : {   //五等奖
+          $(".ls_error").show();
+        }break;
+      }
+    }
+		/*发奖*/
+    function grant(num) {
+      var data = redRain('awardResult',num);
+      $("#ls_freeSingle").hide().removeClass('my_top');
+      $("#ls_pre5").hide().removeClass('my_top');
+      $("#ls_pre3").hide().removeClass('my_top');
+      $("#ls_coupon100").hide().removeClass('my_top');
+      $("#ls_coupon50").hide().removeClass('my_top');
+
+      $('.share').attr('data-on','1');
+      $(".lastScreen").show();
+      switch(data.prizetype){
+        case 1 : {   //一等奖
+          $("#succ_freeSingle").show().addClass('my_top');
+        }break;
+        case 2 : {   //二等奖
+          $("#succ_pre5").show().addClass('my_top');
+        }break;
+        case 3 :{   //三等奖
+          $("#succ_pre3").show().addClass('my_top');
+        }break;
+        case 4 : {   //四等奖
+          $("#succ_coupon100").show().addClass('my_top');
+        }break;
+        case 5 : {   //五等奖
+          $("#succ_coupon50").show().addClass('my_top');
+        }break;
+        case 0 : {   //五等奖
+          dialogDisplay("网络不好<br/\>再试一次吧～");
+        }break;
+      }
+    }
+    //关闭按钮
+    $('.ls_closeBtn').on('touchend',function() {
+      document.getElementById("redrain_bg").pause();
+      closeBtn('iswap');
+    });
+    var timer;
+    $('body').on('touchend', function() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            document.getElementById("redrain_bg").pause();
+        }, 5000);
+    });
+      /* toast */
+    function dialogDisplay(str) {
+      $(".shadeMask").html(str);
+      $(".shadeshadeshade").show().animate({opacity: 1}, 0, function () {
+        setTimeout(function () {
+          $(".shadeshadeshade").animate({opacity: 0}, 400, function () {
+            $(this).hide();
+            closeBtn();
+          });
+        }, 1000);
+      });
+    }
+  });
+</script>
+</body>
+</html>

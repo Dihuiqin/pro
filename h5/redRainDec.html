@@ -1,0 +1,327 @@
+<!DOCTYPE html >
+<html >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="misapplication-tap-highlight" content="no" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <title>红包雨-双十二</title>
+  <meta name="keywords" content="红包雨">
+  <meta name="description" content="红包雨">
+  <script src="../public/js/flexibleMine.js"></script>
+  <link href="resource/css/rainDec.css" rel="stylesheet" />
+</head>
+<body>
+<!--红包雨页面——从下往上-->
+<div id="redRain">
+	<!--红包容器-->
+	<div class ="redRain_Wrap"><div class="envelope" id="aaa" style="color:#fff; font-size: 28px;"></div></div>
+	<!--开始前倒计时-->
+	<div class="timeArea">
+		<div class="timingBg timeTxt" ></div>
+		<div class="time">
+			<div class ="timingBg timer3"></div>
+			<div class ="timingBg timer2"></div>
+			<div class ="timingBg timer1"></div>
+		</div>
+	</div>
+	<!--进行时倒计时-->
+	<div class="timeBtn">
+		<div class="timeChange"></div>
+		<div class="timing">10S</div>
+		<div class="timingBg timingBtn"></div>
+	</div>
+	<!--游戏结束-->
+
+	<div class="gameOver">
+		<div class="win" style="display: none">
+			<div class="giftCard"><span></span>元礼金券</div>
+			<div class="preDeposit"><span></span>元预存款</div>
+			<a class="win_btn" href="" ></a>
+		</div>
+		<div class="notWin" style="display: none">
+			<a class="notWin_btn" href="" ></a>
+		</div>
+		<div class="close"></div>
+	</div>
+</div>
+<div class="yck" style="display: none">0</div>
+<div class="lj" style="display: none">0</div>
+<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="resource/data/games.js"></script>
+<script src="resource/js/public.js"></script>
+<script>
+  //关闭按钮
+  $('.timingBtn').on('click',function () {
+    closeBtn('iswap');
+  });
+  $('.close').on('click',function () {
+    closeBtn('iswap');
+  });
+	/*变量*/
+	var yck = 0;
+	var lj = 0;
+	var dialogH = $(".win").height();
+	var redRain_Wrap = $('.redRain_Wrap');
+	var envelope = $('.envelope');
+	var redRain = $("#redRain");
+	var timeBtn = $('.timeBtn');
+	var numDown = $('.timing');
+	var gameOver = $('.gameOver');
+	/*测试数据*/
+	var usenums = 0;
+	$(function () {
+		redRain.css('height',$(window).height());
+		numDown.hide();
+		gameOver.hide();
+	});
+	'use strict';
+	/*红包降落*/
+	(function ($) {
+		//红包初始化
+		var redEnvelope_defaults = {
+			containerWidth : $(window).width(),
+			containerHeight : $(window).height(),
+			imgSize_width: 2.893,//红包的宽度 rem
+			_class: 'envelope',//红包的样式
+			imgSrc: 'resource/images/rainDec/red.png'
+		};
+		/*绘制img标签并兼听点击事件*/
+		function InitEnv() {
+			var imgEnv = document.createElement('div');
+			var imgEnv_img= document.createElement('img');
+			imgEnv_img.src = redEnvelope_defaults.imgSrc;
+			imgEnv_img.style.width = redEnvelope_defaults.imgSize_width + 'rem';
+			imgEnv.setAttribute('class', redEnvelope_defaults._class);
+			/*生成X轴随机数*/
+			var xCoordinate = parseInt(Math.random() * redEnvelope_defaults.containerWidth);//0-750;
+			/*随机生成两条路线*/
+			var redLine = 0;
+			if(xCoordinate%2 == 0){
+				redLine = 0;
+			}else {
+				redLine = 1;
+			}
+			var evnPosition_defaults = {
+				x:xCoordinate,//x随机
+				y:redEnvelope_defaults.containerHeight+Math.random()*5, //不动
+				xMove : 20
+			};
+			getMap(evnPosition_defaults);
+			var mymove = 'translate3d('+evnPosition_defaults.x+'px,'+(redEnvelope_defaults.containerHeight-evnPosition_defaults.xMove)+'px,'+'0)';
+			//设置最下面的位置
+			$(imgEnv).css('transform',mymove);
+			$(imgEnv).css('-moz-transform',mymove);
+			$(imgEnv).css('-ms-transform',mymove);
+			$(imgEnv).css('-o-transform',mymove);
+			$(imgEnv).css('-webkit-transform',mymove);
+			/*添加元素到页面*/
+			redRain_Wrap.prepend(imgEnv);
+			$(imgEnv).prepend(imgEnv_img);
+            /*红包移动*/
+			evnPosition(imgEnv,imgEnv_img,evnPosition_defaults,redLine);
+			/*监听红包被点击事件*/
+			$(imgEnv).one("touchend",clickFun);
+		}
+		function getMap(evnPosition_defaults) {
+			//根据屏幕宽度的值，设定移动的距离
+			var temp = parseInt(redEnvelope_defaults.containerWidth);
+			if(temp>360){
+                evnPosition_defaults.xMove = 4;
+			}
+			if(temp<=360){
+                evnPosition_defaults.xMove = 2.5;
+            }
+		}
+			/*红包位置移动*/
+		function evnPosition(imgEnv,imgEnv_img,evnPosition_defaults,redLine) {
+			var x = evnPosition_defaults.x;
+			var y = evnPosition_defaults.y;
+			var goRight = false;
+			var temp = evnPosition_defaults.xMove;
+			var redWidth = $(imgEnv).width();
+			var redHeight = $(imgEnv).height();
+			var timeMove =1;
+			/*10ms更新一次坐标*/
+			var myRotate = 'rotate(0deg)';
+			if(redLine){
+				goRight = true;
+				var timeMove = Math.random()*10+1;
+			}
+			var timer = setInterval(function(){
+				if(x<=Math.random()*30){
+					/*到达左边界*/
+					goRight = true;
+					myRotate = 'rotate(30deg)';
+					//更换图片
+				}else if(x>=(redEnvelope_defaults.containerWidth-redWidth-Math.random()*30)){
+					/*到达右边界*/
+					goRight = false;
+					myRotate = 'rotate(-30deg)';
+				}
+				/*向左还是向右*/
+				if(goRight){
+					/*向右*/
+					x+=temp;
+				}else{
+					/*向左*/
+					x-=temp;
+				}
+                //根据屏幕height的值，设定移动的距离
+                var tempY = parseInt(redEnvelope_defaults.containerWidth);
+                if(tempY>1000){
+                    y-=Math.random()*4+2;
+                }
+                if(tempY<=1000){
+                    y-=Math.random()*4+1;
+                }
+				var mymove = 'translate3d('+x+'px,'+y+'px,'+'0)';
+				$(imgEnv_img).css({
+					'transform':myRotate,
+					'-moz-transform':myRotate,
+					'-ms-transform':myRotate,
+					'-o-transform':myRotate,
+					'-wbkit-transform':myRotate
+				});
+				$(imgEnv).css('transform',mymove);
+				$(imgEnv).css('-moz-transform',mymove);
+				$(imgEnv).css('-ms-transform',mymove);
+				$(imgEnv).css('-o-transform',mymove);
+				$(imgEnv).css('-webkit-transform',mymove);
+			},timeMove);
+			setInterval(function(){
+				/*当红包移到上方屏幕外时不再移动，并删除img*/
+				if(y<= (-redHeight)){
+					clearInterval(timer);
+					$(imgEnv).remove();
+				}
+			},10);
+		}
+		/*红包被点击事件*/
+		function clickFun() {
+			$(this).off("touch", clickFun);
+			var redT = ($(this).offset().top) - 20;
+			var redL = $(this).offset().left;
+			$(this).animate().stop().addClass("clicked");
+			var resultImg = '';
+      var data = rainDec('getResult');
+      switch (data.prizetype) {
+        case 1 : {
+          yck += 5;
+          if (yck > 10) {
+            yck -= 5;
+          }
+          resultImg = "5.png";   //预存款5元
+        }
+          break;
+        case 2 : {
+          yck += 3;
+          if (yck > 10) {
+            yck -= 3;
+          }
+          resultImg = "3.png";   //预存款3元
+        }
+          break;
+        case 3 : {
+          lj += 100;
+          resultImg = "coupon100.png";   //礼金100元
+        }
+          break;
+        case 4 : {
+          lj += 70;
+          resultImg = "coupon70.png";    //礼金70元
+        }
+          break;
+        case 5 : {
+          lj += 50;
+          resultImg = "coupon50.png";   //礼金50元
+        }
+          break;
+        case 6 : {
+          lj += 20;
+          yck += 0;
+          resultImg = "coupon20.png";  //礼金20元
+        }
+          break;
+        case 0 : {
+          resultImg = "noprize.png";  //无中奖
+        }
+          break;
+      }
+      $('.yck').html(yck);
+      $('.lj').html(lj);
+      result(resultImg, redT, redL);
+		}
+		/*生成红包*/
+		var envInterval = null;
+		/*重复间隔生成红包*/
+		function gameInit() {
+			//红包初始化
+			envInterval = setInterval(InitEnv, 500);
+			/*红包雨进行时间，10s后不再生成红包*/
+			setTimeout(function(){
+				clearInterval(timing);
+				timeBtn.hide();
+				clearInterval(envInterval);
+			},10000);
+		}
+		/*倒计时结束后绘制红包雨*/
+		setTimeout(function(){
+			$('.timingBtn').hide();
+			numDown.show();
+			timing();
+			gameInit();
+		},3000);
+	})($);
+	/*游戏进行时倒计时*/
+	function timing() {
+		var time = $('.timing');
+		var i=10;
+		time.html(i+'S');
+		timing = setInterval(function(){
+			i--;
+			time.html(i+'S');
+		},1000);
+	}
+	/*点击后中奖显示*/
+	function result(resultImg,redT,redL) {
+		var div = "<img class='clickResult' style=' color:#fff;position:absolute;top:"+redT+"px;left:"+redL+"px;' src='"+resultImg+"' />";//定义DIV的样式
+		redRain_Wrap.append(div);
+	}
+	/*游戏结束后弹出结果，取消红包的点击事件*/
+	setTimeout(function(){
+		var yck = $('.yck').html();
+		var lj = $('.lj').html();
+		redRain_Wrap.unbind("click");
+		win(yck,lj);
+	},15500);
+	/*红包雨最终中奖结果*/
+	function win(yck,lj) {
+		var win = $('.win');
+		var notWin = $('.notWin');
+		var giftCard = $('.giftCard span');
+		var preDeposit = $('.preDeposit span');
+		gameOver.show();
+		gameOver.css('z-index','4');
+		giftCard.html('0');
+		preDeposit.html('0');
+		var a = ($(window).height())/2-dialogH/2;
+		if(yck == 0 && lj == 0){
+			win.hide();
+			notWin.show().addClass('clickResultDown').css('top',a);
+		}else if(yck != 0 || lj != 0){
+			notWin.hide();
+			win.show().addClass('clickResultDown').css('top',a);
+			if(lj !== 0){
+				giftCard.html(lj);
+			}
+			if(yck !== 0){
+				preDeposit.html(yck);
+			}
+		}
+	}
+
+</script>
+</body>
+</html>
