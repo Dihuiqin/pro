@@ -1,11 +1,68 @@
 
-body{font-family:PingFangSC-Regular,Helvetica,Arial,sans-serif;}
+body{font-family:PingFangSC-Regular,Helvetica,Arial,sans-serif;min-height:100vh;background:#f5f5f5;}
 
-.games{width: 10rem;height: auto}
-.games ul{width:100%;}
-.games ul li{width:100%;height:1.6rem;line-height:1.6rem;background:#efefef;text-align:center;border:1px #f5f5f5 solid;border-top:none;box-sizing: border-box;}
-.gameList a{display:inline-block;color:#a82333;font-size:.4rem;}
+.games{
+    width: auto;
+    max-height: 4.8rem;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: .213rem;
+    box-sizing: border-box;
+}
+.games ul{
+    width: 100%;
+    display: inline-block;
+}
+.games ul li{
+    position: relative;
+    width: auto;
+    height: .747rem;
+    line-height: .747rem;
+    display: inline-block;
+    float: left;
+    clear: both;
+    box-sizing: border-box;
+    opacity: 0;
+}
+.games .barBg {
+    position: absolute;
+    z-index: -1;
+    top:0;
+    left:0;
+    width: 100%;
+    height: .747rem;
+    border-radius: .4rem;
+    opacity: 0.7;
+    background: #FE565D;
+}
+.games .gameList a{
+    display: inline-block;
+    color:#fff;
+    padding: 0 .213rem;
+}
 
-
+/*淡入淡出*/
+.fadeOut{
+    -moz-animation:      fadeOut ease-in-out .5s forwards;
+    -webkit-animation:   fadeOut ease-in-out .5s forwards;
+    -o-animation:        fadeOut ease-in-out .5s forwards;
+    animation:           fadeOut ease-in-out .5s forwards;
+}
+.fadeIn{
+    -moz-animation:      fadeIn .5s ease-in-out 1s forwards;
+    -webkit-animation:   fadeIn .5s ease-in-out 1s forwards;
+    -o-animation:        fadeIn .5s ease-in-out 1s forwards;
+    animation:           fadeIn .5s ease-in-out 1s forwards;
+}
+/*fadeOut*/
+@keyframes fadeOut {
+    0%  { opacity: 1}
+    100%{ opacity: 0}
+}
+/*fadeIn*/
+@keyframes fadeIn {
+    0%  { opacity: 0}
+    100%{ opacity: 1}
+}
 
 

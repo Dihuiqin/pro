@@ -2,7 +2,6 @@
 <html >
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta name="misapplication-tap-highlight" content="no" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="MobileOptimized" content="320" />
@@ -10,26 +9,87 @@
   <meta name="keywords" content="小游戏">
   <meta name="description" content="小游戏">
   <script src="../public/js/flexibleMine.js"></script>
+  <script src="../public/js/jquery-3.1.0.min.js"></script>
   <link href="resource/css/index.css" rel="stylesheet" />
 </head>
 <body>
-<div class="games">
-  <ul class="gameList">
-    <li><a href="sharkCoin.html">鲨鱼吸金币游戏</a></li>
-    <li><a href="sharkIce.html">鲨鱼砸冰块游戏</a></li>
-    <li><a href="robMoney.html">抢钱大作战</a></li>
-    <li><a href="RedRain.html">红包雨-大小红包</a></li>
-    <li><a href="redRainDec.html">红包雨-爆发式</a></li>
-    <li><a href="redRainYear.html">红包雨-下落式</a></li>
-    <li><a href="redRainNov.html">红包雨-初版</a></li>
-  </ul>
+<div id="scrollBar">
+  <div class="swiper-container games">
+    <ul class="swiper-wrapper gameList">
+      <li class="swiper-slide" ><span class="barBg"></span><a href="sharkCoin.html">鲨鱼吸金币游戏</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="sharkIce.html">鲨鱼砸冰块游戏</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="robMoney.html">抢钱大作战</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="RedRain.html">红包雨-大小红包</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="redRainDec.html">红包雨-爆发式</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="redRainYear.html">红包雨-下落式</a></li>
+      <li class="swiper-slide" ><span class="barBg"></span><a href="redRainNov.html">红包雨-初版</a></li>
+    </ul>
+  </div>
 </div>
-<script src="../public/js/jquery-3.1.0.min.js"></script>
+<script src="../public/js/swiper.js"></script>
 <script>
+  var showNum = 3;
   $(function () {
-
+    if(showNum){
+      var scrollH = ((showNum)*72)/75;
+      $('#scrollBar .games').css('height',scrollH+'rem');
+    }
+    mySwiper()
   });
-
+  /*初始化swiper*/
+  function mySwiper() {
+    for(var i=0;i<showNum+1;i++){
+      $('#scrollBar .gameList').find('a').eq(i).removeClass('fadeOut').addClass('fadeIn');
+    }
+    var child_len = $('#scrollBar .gameList').find('li').length;
+    var child_in = 0;
+    var child_out = 0;
+    var mySwiper = new Swiper('.swiper-container.games', {
+      direction: 'vertical', // 垂直切换选项
+      loop: true, // 循环模式选项
+      slidesPerView: showNum, // 同时显示slide个数
+      freeMode: true, // free模式，不贴合边缘
+      autoplay: {delay: 0}, // 在slide上停留时间为0
+      speed: 2000,
+      allowTouchMove: false,
+      on:{
+        init: function(){
+          //Swiper初始化了
+          var current = $('#scrollBar .gameList').find('li');
+          current.eq(showNum+child_len).removeClass('fadeIn').addClass('fadeOut');
+        },
+        // 切换开始
+        slideChangeTransitionStart:function(){
+          var current = $('#scrollBar .gameList').find('li');
+          /*淡入*/
+          child_in = this.activeIndex+showNum-1;
+          if(this.activeIndex > child_len){
+            current.eq(child_in+1).removeClass('fadeOut fadeIn');
+          }
+          current.eq(child_in).removeClass('fadeOut').addClass('fadeIn');
+        },
+        // 切换结束
+        slideChangeTransitionEnd:function () {
+          var current = $('#scrollBar .gameList').find('li');
+          /*淡出*/
+          child_out = this.activeIndex;
+          current.eq(child_out).removeClass('fadeIn').addClass('fadeOut');
+          if(this.activeIndex > child_len+showNum-1){ // 此处为数据更迭
+            // 避免数据重置时的突兀感
+            for(var i=showNum+1;i<showNum*2;i++){
+              current.eq(i).removeClass('fadeOut').addClass('fadeIn');
+            }
+          }
+          if(this.activeIndex > child_len+showNum-1){ // 此处为数据更迭
+            current.eq(showNum).removeClass('fadeIn').addClass('fadeOut'); // 此处为数据更迭后第一条数据不消失的处理
+          }
+        }
+      }
+    });
+    setTimeout(function () {
+      $('#scrollBar .games').css('opacity',1);
+    },500);
+  }
 </script>
 </body>
 </html>
